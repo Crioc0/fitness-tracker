@@ -1,0 +1,13 @@
+{
+  "training": [
+    { "id": "1", "title": "Становая тяга", "weight": 100, "reps": 4 },
+    { "id": "2", "title": "Подтягивания", "weight": 100, "reps": 4 }
+  ],
+  "comments": [
+    { "id": "1", "text": "a comment about post 1", "postId": "1" },
+    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
