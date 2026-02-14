@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -18,10 +18,12 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
+    "element-plus": "^2.13.2",
     "json-server": "^1.0.0-beta.5",
     "pinia": "^3.0.4",
     "tailwindcss": "^4.1.18",
     "vue": "^3.5.27",
+    "vue-formify": "^2.1.1",
     "vue-router": "^5.0.1"
   },
   "devDependencies": {
