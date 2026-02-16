@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import BaseNumberInput from '@/components/ui/BaseNumberInput';
   import {  useForm } from 'vee-validate';
   import * as zod from 'zod';
   import { toTypedSchema } from '@vee-validate/zod';
@@ -38,7 +37,7 @@
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900">
+  <div class="min-h-screen bg-black text-white">
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
       <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -65,27 +64,12 @@
       <TimerBar />
     </div>
 
-    <main class="pt-32 pb-20 max-w-4xl mx-auto px-6">
-      <form  @submit.prevent="onSubmit">
-        <BaseNumberInput
-          name="number1"
-          label="Количество повторений"
-          :size="'large'"
-          :step="1"
-          :min="1"
-          :max="10"
-        />
-        <BaseNumberInput
-          name="number2"
-          label="Количество повторений"
-          :size="'large'"
-          :step="1"
-          :min="1"
-          :max="10"
-        />
-        <button type="submit">Отправить</button>
-      </Form>
-      <router-view />
+    <main class="">
+
+      <div class="container mx-auto px-4">
+        <router-view />
+      </div>
+
     </main>
   </div>
 </template>
