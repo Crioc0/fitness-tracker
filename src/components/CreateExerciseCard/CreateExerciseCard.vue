@@ -4,17 +4,24 @@ import TimerSand from "vue-material-design-icons/TimerSand.vue";
 import type { Exercise } from '@/types/Exercise.ts';
 import BaseNumberInput from '@/components/ui/BaseNumberInput';
 import { useField } from 'vee-validate';
+import { computed } from 'vue';
 
 const props = defineProps<{
   exercise: Exercise;
   index: number;
 }>();
 
-const deleteExercise = (id) =>{
+const emit = defineEmits<{
+  (e: 'remove', index: number): void
+}>()
+
+const deleteExercise = () =>{
+  emit('remove', props.index)
   console.log('delete')
 }
 
-const { value: title } = useField<string>(`exercises[${props.index}].title`);
+const titlePath = computed(() => `exercises[${props.index}].title`);
+const { value: title } = useField<string>(titlePath);
 </script>
 
 <template>

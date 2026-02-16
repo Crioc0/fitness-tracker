@@ -33,6 +33,14 @@
     push(exercise);
   };
 
+  const removeExercise = (idx:number) => {
+    console.log(fields);
+    if (confirm('Вы уверены, что хотите удалить это упражнение?')) {
+      remove(idx);
+    }
+    console.log(fields);
+  }
+
   const onSubmit = handleSubmit((values) => {
     console.log('Form submitted:', values);
 
@@ -48,7 +56,7 @@
   </div>
   <form class="flex flex-col gap-4 w-fit items-center justify-between" @submit="onSubmit">
     <div v-for="(field, idx) in fields" :key="field.key">
-      <CreateExerciseCard :exercise="field.value" :index="idx" @remove="remove(idx)" />
+      <CreateExerciseCard @remove="removeExercise" :exercise="field.value" :index="idx" />
     </div>
 
     <!-- Кнопка открытия диалога -->
