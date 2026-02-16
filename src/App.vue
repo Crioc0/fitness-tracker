@@ -1,21 +1,40 @@
 <script setup lang="ts">
   import BaseNumberInput from '@/components/ui/BaseNumberInput';
-  import { ref } from 'vue';
-  const number = ref(10);
-  import { useForm } from 'vue-formify';
+  import {  useForm } from 'vee-validate';
+  import * as zod from 'zod';
+  import { toTypedSchema } from '@vee-validate/zod';
 
   type InputNumberProps = {
-    number: number;
+    number1: number;
     number2: number;
   };
 
-  const { Form, Field, handleSubmit, setError } = useForm<InputNumberProps>();
+  const validationSchema = toTypedSchema(
+    zod.object({
+      number1: zod
+        .number({ error: 'Введите число' })
+        .min(1, { message: 'Минимум 1' })
+        .max(10, { message: 'Максимум 10' }),
 
-  const submit = handleSubmit((data) => {
-    console.log(data)
-      setError('number', 'Required field')
-  }
-  )
+      number2: zod
+        .number({ error: 'Введите число' })
+        .min(1, { message: 'Минимум 1' })
+        .max(10, { message: 'Максимум 10' })
+        .optional(),
+    })
+  );
+
+  const { handleSubmit } = useForm<InputNumberProps>({
+    validationSchema,
+    initialValues: {
+      number1: undefined,
+      number2: undefined,
+    },
+  });
+
+  const onSubmit = handleSubmit((values) => {
+    alert(JSON.stringify(values, null, 2));
+  });
 </script>
 
 <template>
@@ -47,29 +66,23 @@
     </div>
 
     <main class="pt-32 pb-20 max-w-4xl mx-auto px-6">
-      <Form @submit="submit">
-        <Field name="number" v-slot="{ field }">
-          <BaseNumberInput
-            v-bind="field"
-            :error="field.error"
-            label="Количество повторений"
-            :size="'large'"
-            :step="1"
-            :min="1"
-            :max="10"
-          />
-        </Field>
-        <Field name="number2" v-slot="{ field }">
-          <BaseNumberInput
-            v-bind="field"
-            :error="field.error"
-            label="Количество повторений"
-            :size="'large'"
-            :step="1"
-            :min="1"
-            :max="10"
-          />
-        </Field>
+      <form  @submit.prevent="onSubmit">
+        <BaseNumberInput
+          name="number1"
+          label="Количество повторений"
+          :size="'large'"
+          :step="1"
+          :min="1"
+          :max="10"
+        />
+        <BaseNumberInput
+          name="number2"
+          label="Количество повторений"
+          :size="'large'"
+          :step="1"
+          :min="1"
+          :max="10"
+        />
         <button type="submit">Отправить</button>
       </Form>
       <router-view />
