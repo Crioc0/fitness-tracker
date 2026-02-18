@@ -1,29 +1,22 @@
 <script lang="ts" setup>
-  import type { InputNumberProps } from 'element-plus';
-  import { useField } from 'vee-validate';
+  const model = defineModel();
+  export type MyInputNumberProps = { name: string; label: string };
+ const props = defineProps<{
+    label: string;
+    controls?: boolean;
+    error?: string;
+    showError?: boolean;
+  }>();
 
-  export type MyInputNumberProps = { name: string, label: string } & Omit<InputNumberProps, 'modelValue'>;
-
-  const props = withDefaults(defineProps<MyInputNumberProps>(), {
-    controls: false,
-  });
-
-  const { value, errorMessage } = useField<number | null>(
-    () => props.name,
-    undefined, // ← это rules
-    {
-      initialValue: null,
-    }
-  );
 </script>
 
 <template>
-  <div class="flex flex-col h-full items-center justify-between">
+  <div class="flex flex-col  items-center justify-between">
     <span>{{ label }}</span>
-    <el-input-number v-model="value" class="my-input-number" v-bind="props" />
-    <small v-if="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </small>
+    <el-input-number v-model="model" :controls class="my-input-number" :class="{ 'is-error': error }" />
+        <small v-if="error && showError" class="error-message">
+          {{ error }}
+        </small>
   </div>
 </template>
 
@@ -36,9 +29,8 @@
   }
 
 
-
-  .is-error :deep(.el-input__wrapper) {
-    border-color: #f56c6c;
+   .is-error>:deep(.el-input) {
+    --el-input-border-color: #f56c6c;
   }
 
   .error-message {

@@ -1,75 +1,63 @@
 <script setup lang="ts">
-  import {  useForm } from 'vee-validate';
-  import * as zod from 'zod';
-  import { toTypedSchema } from '@vee-validate/zod';
+  // import {  useForm } from 'vee-validate';
+  // import * as zod from 'zod';
+  // import { toTypedSchema } from '@vee-validate/zod';
+  import TitleNav from '@/components/TitleNav/TitleNav.vue';
+  import { useRoute } from 'vue-router'
+  import { computed } from 'vue';
 
-  type InputNumberProps = {
-    number1: number;
-    number2: number;
-  };
+  // type InputNumberProps = {
+  //   number1: number;
+  //   number2: number;
+  // };
+  //
+  // const validationSchema = toTypedSchema(
+  //   zod.object({
+  //     number1: zod
+  //       .number({ error: 'Введите число' })
+  //       .min(1, { message: 'Минимум 1' })
+  //       .max(10, { message: 'Максимум 10' }),
+  //
+  //     number2: zod
+  //       .number({ error: 'Введите число' })
+  //       .min(1, { message: 'Минимум 1' })
+  //       .max(10, { message: 'Максимум 10' })
+  //       .optional(),
+  //   })
+  // );
+  //
+  // const { handleSubmit } = useForm<InputNumberProps>({
+  //   validationSchema,
+  //   initialValues: {
+  //     number1: undefined,
+  //     number2: undefined,
+  //   },
+  // });
 
-  const validationSchema = toTypedSchema(
-    zod.object({
-      number1: zod
-        .number({ error: 'Введите число' })
-        .min(1, { message: 'Минимум 1' })
-        .max(10, { message: 'Максимум 10' }),
 
-      number2: zod
-        .number({ error: 'Введите число' })
-        .min(1, { message: 'Минимум 1' })
-        .max(10, { message: 'Максимум 10' })
-        .optional(),
-    })
-  );
+  const route = useRoute()
 
-  const { handleSubmit } = useForm<InputNumberProps>({
-    validationSchema,
-    initialValues: {
-      number1: undefined,
-      number2: undefined,
-    },
-  });
-
-  const onSubmit = handleSubmit((values) => {
-    alert(JSON.stringify(values, null, 2));
-  });
+  const pageTitle = computed<string>(() => {
+    return (route.meta?.title as string) || 'Главная'
+  })
 </script>
 
 <template>
-  <div class="min-h-screen bg-black text-white">
+  <div class="min-h-screen  text-white">
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-      <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <h1 class="text-2xl font-bold from-primary-400 text-blue-400 bg-clip-text">💪 LiftLog</h1>
-        <div class="flex gap-2">
-          <RouterLink
-            to="/today"
-            class="px-4 py-2 rounded-xl text-white bg-slate-800 hover:bg-slate-700 transition-all"
-          >
-            Сегодня
-          </RouterLink>
-          <RouterLink
-            to="/history"
-            class="px-4 py-2 rounded-xl text-white bg-slate-800 hover:bg-slate-700 transition-all"
-          >
-            История
-          </RouterLink>
-        </div>
-      </nav>
+      <TitleNav :title="pageTitle"/>
     </header>
 
     <!-- Timer Bar -->
-    <div class="fixed top-20 left-1/2 transform -translate-x-1/2 z-40">
-      <TimerBar />
-    </div>
+<!--    <div class="fixed top-20 left-1/2 transform -translate-x-1/2 z-40">-->
+<!--      <TimerBar />-->
+<!--    </div>-->
 
-    <main class="">
-
-      <div class="container mx-auto px-4">
+    <main>
+      <div class="container mx-auto flex flex-col  px-4">
         <router-view />
       </div>
-
     </main>
   </div>
 </template>

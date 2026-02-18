@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import Today from '@/views/Today.vue';
+import WorkoutCreation from '@/views/WorkoutCreation.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,7 +8,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Today,
+      component: WorkoutCreation,
+      meta: { title: 'Создание тренировок' }
     },
     {
       path: '/about',

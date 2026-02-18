@@ -5,6 +5,7 @@ import type { Exercise } from '@/types/Exercise.ts';
 import BaseNumberInput from '@/components/ui/BaseNumberInput';
 import { useField } from 'vee-validate';
 import { computed } from 'vue';
+import FormField from '@/components/ui/FormField/FormField.vue';
 
 const props = defineProps<{
   exercise: Exercise;
@@ -39,10 +40,20 @@ const { value: title } = useField<string>(titlePath);
       </button>
     </div>
     <div class="flex gap-4">
-      <BaseNumberInput :name="`exercises[${index}].sets`" label="Сеты"/>
-      <BaseNumberInput :name="`exercises[${index}].reps`" label="Повторы" />
-      <BaseNumberInput :name="`exercises[${index}].weight`" label="Вес (КГ)"/>
-      <BaseNumberInput :name="`exercises[${index}].time`" label="Время"/>
+      <FormField :name="`exercises[${index}].sets`" v-slot="{ field }">
+        <BaseNumberInput v-bind="field" label="Сеты"/>
+      </FormField>
+      <FormField :name="`exercises[${index}].reps`" v-slot="{ field }">
+        <BaseNumberInput v-bind=field label="Повторы" />
+      </FormField>
+      <FormField :name="`exercises[${index}].weight`" v-slot="{ field }">
+        <BaseNumberInput v-bind=field label="Вес (КГ)" />
+      </FormField>
+      <FormField :name="`exercises[${index}].time`" v-slot="{ field }">
+        <BaseNumberInput v-bind=field label="Время" />
+      </FormField>
+
+
     </div>
     <el-divider />
     <div class="flex justify-between">
@@ -51,7 +62,6 @@ const { value: title } = useField<string>(titlePath);
         <span>Отдых : {{exercise.timer}}</span>
       </div>
       <span>Изменить таймер</span>
-
     </div>
   </div>
 
