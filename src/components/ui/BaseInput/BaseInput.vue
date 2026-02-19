@@ -1,6 +1,6 @@
-<!-- BaseInput.vue - с defineModel -->
+
 <script lang="ts" setup>
-// defineModel создаст modelValue и onUpdate:modelValue
+
 const model = defineModel<string>({
   required: true
 });
@@ -21,6 +21,7 @@ const props = defineProps<{
   <div class="relative">
     <label v-if="label">{{ label }}</label>
     <el-input
+      class="w-full"
       v-model="model"
       :size="size"
       :placeholder="placeholder"

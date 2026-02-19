@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import Delete from "vue-material-design-icons/Delete.vue";
+import TrashCanOutline from "vue-material-design-icons/TrashCanOutline.vue";
 import TimerSand from "vue-material-design-icons/TimerSand.vue";
+import LightningBolt from "vue-material-design-icons/LightningBolt.vue";
 import type { Exercise } from '@/types/Exercise.ts';
 import BaseNumberInput from '@/components/ui/BaseNumberInput';
 import { useField } from 'vee-validate';
 import { computed } from 'vue';
 import FormField from '@/components/ui/FormField/FormField.vue';
+import Dumbbel from 'vue-material-design-icons/Dumbbell.vue';
 
 const props = defineProps<{
   exercise: Exercise;
@@ -27,31 +29,26 @@ const { value: title } = useField<string>(titlePath);
 
 <template>
   <div class=" w-full p-4 ">
-    <div class="header w-full   flex items-center justify-between mb-4">
+    <div class="header w-full  flex items-center justify-between mb-4">
       <div class="flex items-center">
-        <div class="w-10 h-10 bg-blue-800 rounded-full mr-3"></div>
+        <div class="w-10 h-10 bg-blue-400/20 rounded-full flex justify-center items-center mr-3"><LightningBolt :fillColor="'var(--el-color-primary)'" /></div>
         <div class=" flex-wrap justify-around items-center">
-          <h2><el-input v-model="title"></el-input></h2>
+          <h2 class="text-lg">{{title}}</h2>
           <h3 class="text-xs">НАСТРОЙКА ПАРАМЕТРОВ</h3>
         </div>
       </div>
       <button @click="deleteExercise">
-        <Delete class="w-5 h-5" />
+        <TrashCanOutline :fillColor="'#f43f5e'" class="w-5 h-5" />
       </button>
     </div>
-    <div class="flex gap-4">
+    <div class="flex justify-center gap-4">
       <FormField :name="`exercises[${index}].sets`" v-slot="{ field }">
-        <BaseNumberInput v-bind="field" label="Сеты"/>
+        <BaseNumberInput v-bind="field" controls size="large" label="Сеты"/>
       </FormField>
       <FormField :name="`exercises[${index}].reps`" v-slot="{ field }">
-        <BaseNumberInput v-bind=field label="Повторы" />
+        <BaseNumberInput v-bind=field controls size="large" label="Повторы" />
       </FormField>
-      <FormField :name="`exercises[${index}].weight`" v-slot="{ field }">
-        <BaseNumberInput v-bind=field label="Вес (КГ)" />
-      </FormField>
-      <FormField :name="`exercises[${index}].time`" v-slot="{ field }">
-        <BaseNumberInput v-bind=field label="Время" />
-      </FormField>
+
 
 
     </div>

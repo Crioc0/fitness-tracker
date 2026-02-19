@@ -20,10 +20,8 @@
 
     emit('add', {
       title: title.value,
-      reps: 0,
-      weight: 0,
-      sets: 0,
-      max: 0,
+      sets: 1,
+      reps: 10,
       timer: 60,
     });
 
@@ -33,7 +31,7 @@
 </script>
 
 <template>
-  <el-dialog v-model="model" class="exercise-dialog" title="Добавить упражнение" width="95%">
+  <el-dialog v-model="model" class="exercise-dialog " title="Добавить упражнение" :width="'clamp(380px, 90vw, 510px)'"  >
     <el-input v-model="title" />
 
     <div class="mt-4 flex justify-end gap-2">

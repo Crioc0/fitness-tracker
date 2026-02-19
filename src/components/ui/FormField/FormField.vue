@@ -25,12 +25,9 @@ const fieldProps = computed(() => ({
 </script>
 
 <template>
-  <div>
     <slot
       :field="fieldProps"
       :meta="meta"
       :error="errorMessage"
     />
-
-  </div>
 </template>
