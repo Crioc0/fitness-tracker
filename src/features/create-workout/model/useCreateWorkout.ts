@@ -12,9 +12,6 @@ export function useCreateWorkout() {
 
 
 
-
-
-
   const onSubmit = handleSubmit((values) => {
     const normalized = normalizeEmptyStrings(values);
     console.log('✅', normalized);

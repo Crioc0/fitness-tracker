@@ -2,12 +2,13 @@
 import TrashCanOutline from "vue-material-design-icons/TrashCanOutline.vue";
 import TimerSand from "vue-material-design-icons/TimerSand.vue";
 import LightningBolt from "vue-material-design-icons/LightningBolt.vue";
-import type { Exercise } from '@/types/Exercise.ts';
+
 import BaseNumberInput from '@/components/ui/BaseNumberInput';
 import { useField } from 'vee-validate';
 import { computed } from 'vue';
 import FormField from '@/components/ui/FormField/FormField.vue';
 import { useManageExercise } from '@features/create-workout/model/useManageExercise.ts';
+import type { Exercise } from '@entities/exercise';
 
 const props = defineProps<{
   exercise: Exercise;
