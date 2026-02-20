@@ -7,21 +7,14 @@ import BaseNumberInput from '@/components/ui/BaseNumberInput';
 import { useField } from 'vee-validate';
 import { computed } from 'vue';
 import FormField from '@/components/ui/FormField/FormField.vue';
-import Dumbbel from 'vue-material-design-icons/Dumbbell.vue';
+import { useManageExercise } from '@features/create-workout/model/useManageExercise.ts';
 
 const props = defineProps<{
   exercise: Exercise;
   index: number;
 }>();
 
-const emit = defineEmits<{
-  (e: 'remove', index: number): void
-}>()
-
-const deleteExercise = () =>{
-  emit('remove', props.index)
-  console.log('delete')
-}
+const {removeExercise} = useManageExercise()
 
 const titlePath = computed(() => `exercises[${props.index}].title`);
 const { value: title } = useField<string>(titlePath);
@@ -37,16 +30,16 @@ const { value: title } = useField<string>(titlePath);
           <h3 class="text-xs">НАСТРОЙКА ПАРАМЕТРОВ</h3>
         </div>
       </div>
-      <button @click="deleteExercise">
+      <button @click="removeExercise(index)">
         <TrashCanOutline :fillColor="'#f43f5e'" class="w-5 h-5" />
       </button>
     </div>
     <div class="flex justify-center gap-4">
       <FormField :name="`exercises[${index}].sets`" v-slot="{ field }">
-        <BaseNumberInput v-bind="field" controls size="large" label="Сеты"/>
+        <BaseNumberInput v-bind="field" controls size="large" :min="1" label="Сеты"/>
       </FormField>
       <FormField :name="`exercises[${index}].reps`" v-slot="{ field }">
-        <BaseNumberInput v-bind=field controls size="large" label="Повторы" />
+        <BaseNumberInput v-bind=field controls size="large" :min="1" label="Повторы" />
       </FormField>
 
 
