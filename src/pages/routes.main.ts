@@ -1,4 +1,5 @@
 import WorkoutCreationPage from '@pages/WorkoutCreationPage.vue';
+import TrainingPage from "@pages/TrainingPage.vue";
 
 export const mainRoutes = [
   {
@@ -6,6 +7,12 @@ export const mainRoutes = [
     name: 'home',
     component: WorkoutCreationPage,
     meta: { title: 'Создание тренировок' }
+  },
+  {
+    path: '/training',
+    name: 'training',
+    component: TrainingPage,
+    meta: { title: 'Тренировка' }
   },
   {
     path: '/about',

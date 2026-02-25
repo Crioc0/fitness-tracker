@@ -11,4 +11,6 @@ export const workoutSchema = z.object({
 });
 
 // Тип данных формы на основе схемы
-export type Workout = z.infer<typeof workoutSchema>;
+export type WorkoutTemplate = z.infer<typeof workoutSchema>;
+
+

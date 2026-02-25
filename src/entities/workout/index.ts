@@ -1,1 +1,1 @@
-export {type Workout, workoutSchema} from './lib/workoutSchema.ts'
+export {type WorkoutTemplate, workoutSchema} from './lib/workoutSchema.ts'
