@@ -2,10 +2,12 @@
   const model = defineModel();
   export type MyInputNumberProps = { name: string; label: string };
  const props = defineProps<{
-    label: string;
+    label?: string;
     controls?: boolean;
     error?: string;
     showError?: boolean;
+    min?: number;
+    max?: number;
   }>();
 
 </script>
@@ -16,6 +18,8 @@
     <el-input-number
       v-model="model"
       :controls="controls"
+      :min
+      :max
       class="my-input-number"
       :class="{
         'is-error': error,

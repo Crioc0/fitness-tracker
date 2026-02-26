@@ -24,6 +24,7 @@ export function createWorkoutSession(
         exerciseTitle: exercise.title,
         setNumber: set,
         targetReps: exercise.reps,
+        completedReps: 0,
         duration: exercise.workTimer ?? undefined,
       }
 
@@ -41,7 +42,7 @@ export function createWorkoutSession(
           exerciseId: `${exerciseIndex}`,
           exerciseTitle: exercise.title,
           setNumber: set,
-          duration: exercise.restTimer,
+          duration: 5,
         }
 
         phases.push(restPhase)
@@ -51,6 +52,7 @@ export function createWorkoutSession(
 
   return {
     id: crypto.randomUUID(),
+    workoutId: crypto.randomUUID(),
     templateId: undefined,
     title: template.title,
     startedAt: Date.now(),

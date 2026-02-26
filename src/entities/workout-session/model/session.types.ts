@@ -38,6 +38,7 @@ export type WorkoutPhase = WorkPhase | RestPhase
 
 export interface WorkoutSession {
   id: string
+  workoutId: string
   templateId?: string
   title: string
   startedAt: number
