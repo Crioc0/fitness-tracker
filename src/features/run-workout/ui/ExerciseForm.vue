@@ -1,7 +1,8 @@
 <script setup lang="ts">
   import type { WorkoutTemplate } from '@entities/workout';
   import BaseNumberInput from '@/components/ui/BaseNumberInput';
-  import { useRunWorkout } from '@features/training/model/useRunWorkout.ts';
+import { useRunWorkout } from '../model/useRunWorkout';
+
 
 
   const props = defineProps<{
@@ -23,7 +24,7 @@
 </script>
 
 <template>
-  <div class="max-w-[90vh] min-w-[375px]  mx-auto bg-gray-950 text-white flex items-center justify-center py-6">
+  <div class=" bg-gray-950 text-white flex items-center justify-center py-6">
     <div class="w-full max-w-md bg-gray-900 rounded-2xl shadow-xl p-4 space-y-6">
       <!-- Header -->
       <div class="text-center space-y-1">

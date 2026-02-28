@@ -1,5 +1,6 @@
 import WorkoutCreationPage from '@pages/WorkoutCreationPage.vue';
-import TrainingPage from "@pages/TrainingPage.vue";
+import WorkoutSelectionPage from '@pages/WorkoutSelectionPage.vue';
+import RunWorkoutPage from './RunWorkoutPage.vue';
 
 export const mainRoutes = [
   {
@@ -9,17 +10,15 @@ export const mainRoutes = [
     meta: { title: 'Создание тренировок' }
   },
   {
-    path: '/training',
-    name: 'training',
-    component: TrainingPage,
-    meta: { title: 'Тренировка' }
+    path: '/workouts',
+    name: 'workouts',
+    component: WorkoutSelectionPage,
+    meta: { title: 'Выбор тренировки' }
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (About.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import('../views/AboutView.vue'),
+    path: '/run-workout',
+    name: 'run-workout',
+    component: RunWorkoutPage,
+    meta: { title: 'Тренировка' }
   },
 ]

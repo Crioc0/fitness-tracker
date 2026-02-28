@@ -50,7 +50,7 @@ const { value: title } = useField<string>(titlePath);
     <div class="flex justify-between">
       <div class="flex gap-2">
         <TimerSand />
-        <span>Отдых : {{exercise.timer}}</span>
+        <span>Отдых : {{exercise.restTimer}}</span>
       </div>
       <span>Изменить таймер</span>
     </div>

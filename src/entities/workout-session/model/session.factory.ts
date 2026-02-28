@@ -1,4 +1,6 @@
 import type { WorkoutTemplate } from '@/entities/workout'
+import { v4 as uuidv4, } from 'uuid';
+
 import type {
   WorkoutSession,
   WorkoutPhase,
@@ -18,7 +20,7 @@ export function createWorkoutSession(
        * duration может быть undefined
        */
       const workPhase: WorkPhase = {
-        id: crypto.randomUUID(),
+        id: uuidv4(),
         type: 'work',
         exerciseId: `${exerciseIndex}`,
         exerciseTitle: exercise.title,
@@ -37,7 +39,7 @@ export function createWorkoutSession(
        */
       if (set < exercise.sets || exerciseIndex < template.exercises.length - 1) {
         const restPhase: RestPhase = {
-          id: crypto.randomUUID(),
+          id: uuidv4(),
           type: 'rest',
           exerciseId: `${exerciseIndex}`,
           exerciseTitle: exercise.title,
@@ -51,8 +53,8 @@ export function createWorkoutSession(
   })
 
   return {
-    id: crypto.randomUUID(),
-    workoutId: crypto.randomUUID(),
+    id: uuidv4(),
+    workoutId: uuidv4(),
     templateId: undefined,
     title: template.title,
     startedAt: Date.now(),

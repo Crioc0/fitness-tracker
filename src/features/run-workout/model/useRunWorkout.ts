@@ -4,12 +4,8 @@ import { createWorkoutSession } from '@entities/workout-session';
 import { computed, ref, watch, onUnmounted, onMounted } from 'vue';
 import { buildFinishedWorkoutDTO } from '@entities/workout-session/lib/buildFinishedWorkoutDTO.ts';
 import { FinishedWorkoutDTOSchema } from '@entities/workout-session/model/finished-workout.schema.ts';
-import {
-  loadPhaseIndex,
-  saveCompleteReps,
-  savePhaseIndex,
-} from '@features/training/model/persistence.ts';
-import { useTimer } from '@features/training/model/useTimer.ts';
+import { loadPhaseIndex, saveCompleteReps, savePhaseIndex } from './persistence';
+import { useTimer } from './useTimer';
 
 
 export const useRunWorkout = (workout: WorkoutTemplate) => {

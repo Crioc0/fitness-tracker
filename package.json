@@ -25,6 +25,7 @@
     "json-server": "^1.0.0-beta.5",
     "pinia": "^3.0.4",
     "tailwindcss": "^4.1.18",
+    "uuid": "^13.0.0",
     "vee-validate": "^4.15.1",
     "vue": "^3.5.27",
     "vue-material-design-icons": "^5.3.1",
