@@ -1,6 +1,5 @@
 import z from 'zod';
 
-
 export const FinishedWorkoutDTOSchema = z.object({
   sessionId: z.string().uuid(),
   workoutId: z.string(),
@@ -16,9 +15,9 @@ export const FinishedWorkoutDTOSchema = z.object({
           setNumber: z.number(),
           plannedReps: z.number().optional(),
           actualReps: z.number().optional(),
-          restDuration: z.number().optional()
+          restDuration: z.number().optional(),
         })
-      )
+      ),
     })
-  )
-})
+  ),
+});

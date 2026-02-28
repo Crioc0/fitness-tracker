@@ -7,12 +7,12 @@ export function useManageExercise() {
   const dialogVisible = ref(false);
   const exerciseTitle = ref('');
   const handleAddExercise = () => {
-    if (!exerciseTitle.value && exerciseTitle.value.length ===0) return
+    if (!exerciseTitle.value && exerciseTitle.value.length === 0) return;
     push({
       title: exerciseTitle.value,
       sets: 1,
       reps: 10,
-      timer: 60,
+      restTimer: 60,
     });
     dialogVisible.value = false;
   };
@@ -26,6 +26,6 @@ export function useManageExercise() {
     dialogVisible,
     handleAddExercise,
     removeExercise,
-    exerciseTitle
+    exerciseTitle,
   };
 }
