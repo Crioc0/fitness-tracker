@@ -1,13 +1,35 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import BaseDialog from '@shared/ui/BaseDialog.vue'
+import ExerciseSelection from '@features/select-exercise'
 
-import BaseDialog from '@shared/ui/BaseDialog.vue';
-import { useManageExercise } from '@features/create-workout/model/useManageExercise.ts';
+const dialogVisible = defineModel<boolean>()
+const selectedExercise = ref<string | string[]>('')
 
-const {handleAddExercise,dialogVisible, exerciseTitle } = useManageExercise()
+
+const emit = defineEmits<{
+  (e: 'confirm', value: string | string[]): void,
+}>()
+
+const handleConfirm = () => {
+  emit('confirm', selectedExercise.value)
+  dialogVisible.value = false
+  selectedExercise.value = ''
+}
+
+const close = ()=>{
+  dialogVisible.value = false
+  selectedExercise.value = ''
+}
 </script>
 
 <template>
-  <BaseDialog title="Добавить упражнение" v-model="dialogVisible" @confirm="handleAddExercise">
-    <el-input v-model="exerciseTitle" />
+  <BaseDialog
+    title="Добавить упражнение"
+    v-model="dialogVisible"
+    @confirm="handleConfirm"
+    @cancel="close"
+  >
+    <ExerciseSelection v-model="selectedExercise" />
   </BaseDialog>
 </template>

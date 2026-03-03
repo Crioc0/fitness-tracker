@@ -6,13 +6,17 @@
   import IconWrapper from '@/components/IconWrapper/IconWrapper.vue';
   import { useManageExercise } from '@features/create-workout/model/useManageExercise.ts';
   import { useCreateWorkout } from '@features/create-workout/model/useCreateWorkout.ts';
-  import BaseDialog from '@shared/ui/BaseDialog.vue';
   import ExerciseCard from '@features/create-workout/ui/ExerciseCard.vue';
+  import SelectExerciseDialog from '@features/create-workout/ui/SelectExerciseDialog.vue';
 
 
   const {onSubmit, errors, meta} = useCreateWorkout()
 
-  const {fields, handleAddExercise,dialogVisible, exerciseTitle } = useManageExercise()
+  const {
+    fields,
+    dialogVisible,
+    addExercise,
+  } = useManageExercise()
 
 
 
@@ -62,8 +66,7 @@
     </div>
 
   </form>
-  <BaseDialog title="Добавить упражнение" v-model="dialogVisible" @confirm="handleAddExercise">
-    <el-input v-model="exerciseTitle" />
-  </BaseDialog>
+  <SelectExerciseDialog @confirm="addExercise"  v-model="dialogVisible" />
+
 <!--  <ExerciseSelectDialog/>-->
 </template>

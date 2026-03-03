@@ -29,9 +29,14 @@ export function useSelectWorkout() {
 
   // в будущем здесь можно положить асинхронный fetch
   async function loadWorkouts() {
-    // имитация сетевого запроса
-    await new Promise((r) => setTimeout(r, 300));
-    workouts.value = _workouts;
+    try {
+      const res = await fetch('http://localhost:3000/workout-templates');
+
+      workouts.value = await res.json();
+
+    } catch (error) {
+      console.error('❌ Ошибка при загрузке:', error);
+    }
   }
 
   return {

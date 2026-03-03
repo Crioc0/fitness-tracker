@@ -5,20 +5,29 @@ import { normalizeEmptyStrings } from '@shared/lib/helpers';
 
 
 export function useCreateWorkout() {
-  const { handleSubmit, errors, meta } = useForm({
+  const { handleSubmit, errors, meta,resetForm } = useForm({
     validationSchema: toTypedSchema(workoutSchema),
     initialValues: { title: '', exercises: [] }
   });
 
 
 
-  const onSubmit = handleSubmit((values) => {
+  const onSubmit = handleSubmit(async (values) => {
     const normalized = normalizeEmptyStrings(values);
     console.log('✅', normalized);
-    // API вызов: createWorkout(normalized)
+    await fetch('http://localhost:3000/workout-templates', {
+      method: 'POST', // или 'PUT' если обновляете существующую запись
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(normalized) // преобразуем объект в JSON строку
+    });
+
+    resetForm()
   });
 
   return {
+    resetForm,
     onSubmit,
     errors,
     meta

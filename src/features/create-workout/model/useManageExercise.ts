@@ -6,14 +6,17 @@ export function useManageExercise() {
   const { fields, push, remove } = useFieldArray<Exercise>('exercises');
   const dialogVisible = ref(false);
   const exerciseTitle = ref('');
-  const handleAddExercise = () => {
-    if (!exerciseTitle.value && exerciseTitle.value.length === 0) return;
-    push({
-      title: exerciseTitle.value,
-      sets: 1,
-      reps: 10,
-      restTimer: 60,
-    });
+  const addExercise = (exerciseTitle:string | string[]) => {
+    for (const item of exerciseTitle) {
+      if (!item.trim()) return
+      push({
+        title: item,
+        sets: 1,
+        reps: 10,
+        restTimer: 60,
+      });
+    }
+
     dialogVisible.value = false;
   };
 
@@ -24,7 +27,7 @@ export function useManageExercise() {
   return {
     fields,
     dialogVisible,
-    handleAddExercise,
+    addExercise,
     removeExercise,
     exerciseTitle,
   };
