@@ -7,7 +7,7 @@
 
       <ul class="space-y-3">
         <li
-          v-for="workout in workouts"
+          v-for="workout in workoutTemplatesStore.workoutTemplates"
           :key="workout.title"
           class="cursor-pointer p-4 bg-gray-800 rounded-2xl hover:bg-gray-700 transition"
           @click="select(workout)"
@@ -19,7 +19,7 @@
         </li>
       </ul>
 
-      <div v-if="workouts.length === 0" class="text-center text-gray-400">
+      <div v-if="workoutTemplatesStore.workoutTemplates.length === 0" class="text-center text-gray-400">
         Тренировок не найдено
       </div>
     </div>
@@ -31,7 +31,7 @@ import type { WorkoutTemplate } from '@entities/workout';
 import { useRouter } from 'vue-router';
 import { useSelectWorkout } from '../model/useSelectWorkout.ts';
 
-const { workouts, selectWorkout, loadWorkouts } = useSelectWorkout();
+const { selectWorkout,workoutTemplatesStore } = useSelectWorkout();
 const router = useRouter();
 
 async function select(workout: WorkoutTemplate) {
@@ -39,6 +39,4 @@ async function select(workout: WorkoutTemplate) {
   await router.push({ name: 'run-workout' });
 }
 
-// при монтировании подгружаем список (даже если он локальный) чтобы сохранить pattern
-loadWorkouts();
 </script>

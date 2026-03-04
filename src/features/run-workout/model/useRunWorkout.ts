@@ -3,9 +3,9 @@ import type { WorkoutPhase } from '@entities/workout-session';
 import { createWorkoutSession } from '@entities/workout-session';
 import { computed, ref, watch, onUnmounted, onMounted } from 'vue';
 import { buildFinishedWorkoutDTO } from '@entities/workout-session/lib/buildFinishedWorkoutDTO.ts';
-import { FinishedWorkoutDTOSchema } from '@entities/workout-session/model/finished-workout.schema.ts';
 import { loadPhaseIndex, saveCompleteReps, savePhaseIndex } from './persistence';
 import { useTimer } from './useTimer';
+import { useWorkoutSessionStore } from '@entities/workout-session/model/workout-session.store.ts';
 
 
 export const useRunWorkout = (workout: WorkoutTemplate) => {
@@ -16,6 +16,7 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
 ------------------------------------------ */
 
   const workoutSession = createWorkoutSession(workout);
+  const workoutSessionStore = useWorkoutSessionStore()
 
   const currentPhaseIndex = ref(0);
 
@@ -37,10 +38,9 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
 
   const actualReps = ref<number>(0)
 
-  const finishWorkout = () => {
+  const finishWorkout = async () => {
     const dto = buildFinishedWorkoutDTO(workoutSession)
-    FinishedWorkoutDTOSchema.parse(dto)
-    console.log(dto)
+    await workoutSessionStore.finishWorkoutSession(dto)
   }
 
   async function next() {

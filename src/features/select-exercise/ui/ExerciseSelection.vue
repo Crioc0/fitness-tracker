@@ -3,18 +3,17 @@
 import { useSelectExercise } from '@features/select-exercise/model/useSelectExercise.ts';
 
 const selected = defineModel<string | string[]>()
-const {exercises} = useSelectExercise()
-
-
+const { exercisesStore } = useSelectExercise()
 
 </script>
 
 <template>
   <div class="w-full flex">
     <el-tree-select
+      v-if="!exercisesStore.isLoading"
       width="100%"
       v-model="selected"
-      :data="exercises"
+      :data="exercisesStore.exercises"
       show-checkbox
       check-strictly
       multiple

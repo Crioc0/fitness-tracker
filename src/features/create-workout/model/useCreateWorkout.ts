@@ -1,7 +1,8 @@
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
-import { workoutSchema } from '@entities/workout';
+import { workoutSchema, type WorkoutTemplate } from '@entities/workout';
 import { normalizeEmptyStrings } from '@shared/lib/helpers';
+import { useWorkoutTemplatesStore } from '@entities/workout/model/workout.store.ts';
 
 
 export function useCreateWorkout() {
@@ -10,19 +11,13 @@ export function useCreateWorkout() {
     initialValues: { title: '', exercises: [] }
   });
 
+  const workoutTemplateStore = useWorkoutTemplatesStore()
+
 
 
   const onSubmit = handleSubmit(async (values) => {
-    const normalized = normalizeEmptyStrings(values);
-    console.log('✅', normalized);
-    await fetch('http://localhost:3000/workout-templates', {
-      method: 'POST', // или 'PUT' если обновляете существующую запись
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(normalized) // преобразуем объект в JSON строку
-    });
-
+    const normalized = normalizeEmptyStrings<WorkoutTemplate>(values) ;
+    await workoutTemplateStore.createWorkoutTemplate(normalized);
     resetForm()
   });
 

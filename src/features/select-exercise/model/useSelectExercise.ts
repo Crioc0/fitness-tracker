@@ -1,18 +1,13 @@
-import { onMounted, ref } from 'vue';
+import { onMounted} from 'vue';
+import { useExerciseStore } from '@entities/exercise/model/exercise.store.ts';
 
 export const useSelectExercise = ()=>{
-  const exercises = ref([])
-
+  const exercisesStore = useExerciseStore()
   onMounted(async ()=>{
-    try {
-      const res = await fetch('http://localhost:3000/exercises')
-      exercises.value =await res.json()
-    } catch (error) {
-      console.log(error)
-    }
+    await exercisesStore.getAllExercises()
   })
 
   return {
-    exercises
+    exercisesStore
   }
 }

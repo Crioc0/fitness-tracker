@@ -13,6 +13,41 @@
       "reps": 4
     }
   ],
+  "workout-sessions": [
+    {
+      "id": "77ed",
+      "sessionId": "38bd8394-b65e-4f67-a198-b1e81c70a445",
+      "workoutId": "589ad0ca-382e-4b0a-9887-fc53aa17192f",
+      "startedAt": 1772611346997,
+      "finishedAt": 1772611405624,
+      "totalDuration": 58627,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Тест",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 13,
+              "actualReps": 13,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 2,
+              "plannedReps": 13,
+              "actualReps": 13,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 3,
+              "plannedReps": 13,
+              "actualReps": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "workout-templates": [
     {
       "id": "8f54",
@@ -37,9 +72,33 @@
           "restTimer": 60
         }
       ]
+    },
+    {
+      "id": "d139",
+      "title": "Тест 3",
+      "exercises": [
+        {
+          "title": "Жим штанги на наклонной",
+          "reps": 10,
+          "sets": 1,
+          "restTimer": 60
+        },
+        {
+          "title": "Сведение в кроссовере верх",
+          "reps": 10,
+          "sets": 1,
+          "restTimer": 60
+        },
+        {
+          "title": "Жим гантелей 45",
+          "reps": 10,
+          "sets": 1,
+          "restTimer": 60
+        }
+      ]
     }
   ],
-  "exercises" : [
+  "exercises": [
     {
       "value": "Грудные",
       "label": "Грудные мышцы",
@@ -98,7 +157,8 @@
             }
           ]
         }
-      ]
+      ],
+      "id": "180d"
     },
     {
       "value": "Спина",
@@ -158,7 +218,8 @@
             }
           ]
         }
-      ]
+      ],
+      "id": "814a"
     },
     {
       "value": "Ноги",
@@ -218,7 +279,8 @@
             }
           ]
         }
-      ]
+      ],
+      "id": "8e9a"
     }
   ],
   "comments": [

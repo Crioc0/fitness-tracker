@@ -21,3 +21,5 @@ export const FinishedWorkoutDTOSchema = z.object({
     })
   ),
 });
+
+export type FinishedWorkoutDTO = z.infer<typeof FinishedWorkoutDTOSchema>
