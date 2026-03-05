@@ -1,5 +1,6 @@
 import { httpClient } from '@shared/lib/api/http.ts';
-import type { WorkoutTemplate } from '@entities/workout';
+import type { WorkoutTemplate } from '../lib/workoutSchema';
+
 
 export const getAll = async () => {
   return await httpClient.get('/workout-templates');

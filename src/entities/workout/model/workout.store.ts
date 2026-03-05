@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import type { WorkoutTemplate } from '@entities/workout';
+import type { WorkoutTemplate } from '../lib/workoutSchema.ts';
 import { getAll, create } from '../api/workout.api.ts';
 
 export const useWorkoutTemplatesStore = defineStore('workout-template', () => {

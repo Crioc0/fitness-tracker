@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import type { Exercise } from '@entities/exercise';
-import { getAll } from '@entities/exercise'
+import type { Exercise } from '../lib/exerciseSchema';
+import { getAll } from '../api/exersise.api'
 
 export const useExerciseStore = defineStore('exercise', () => {
   const exercises = ref<Exercise[]>([]);

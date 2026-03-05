@@ -1,8 +1,6 @@
 import { httpClient } from '@shared/lib/api/http.ts';
-import {
-  type FinishedWorkoutDTO,
-  FinishedWorkoutDTOSchema,
-} from '@entities/workout-session';
+import { FinishedWorkoutDTOSchema, type FinishedWorkoutDTO } from '../model/finished-workout.schema';
+
 
 export const create = async (dto: FinishedWorkoutDTO) => {
   FinishedWorkoutDTOSchema.parse(dto);
