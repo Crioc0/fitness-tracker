@@ -10,5 +10,5 @@ export async function loadPhaseIndex() {
 
 export async function saveCompleteReps(index: number, reps: number) {
   const completedReps = (await idb.get<Array<Record<number, number>>>('completedReps')) || [];
-  await idb.set('completedReps', [...completedReps, {[index]: reps}])
+  await idb.set('completedReps', [...completedReps, { [index]: reps }]);
 }

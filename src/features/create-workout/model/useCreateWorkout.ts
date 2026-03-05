@@ -4,27 +4,24 @@ import { workoutSchema, type WorkoutTemplate } from '@entities/workout';
 import { normalizeEmptyStrings } from '@shared/lib/helpers';
 import { useWorkoutTemplatesStore } from '@entities/workout/model/workout.store.ts';
 
-
 export function useCreateWorkout() {
-  const { handleSubmit, errors, meta,resetForm } = useForm({
+  const { handleSubmit, errors, meta, resetForm } = useForm({
     validationSchema: toTypedSchema(workoutSchema),
-    initialValues: { title: '', exercises: [] }
+    initialValues: { title: '', exercises: [] },
   });
 
-  const workoutTemplateStore = useWorkoutTemplatesStore()
-
-
+  const workoutTemplateStore = useWorkoutTemplatesStore();
 
   const onSubmit = handleSubmit(async (values) => {
-    const normalized = normalizeEmptyStrings<WorkoutTemplate>(values) ;
+    const normalized = normalizeEmptyStrings<WorkoutTemplate>(values);
     await workoutTemplateStore.createWorkoutTemplate(normalized);
-    resetForm()
+    resetForm();
   });
 
   return {
     resetForm,
     onSubmit,
     errors,
-    meta
+    meta,
   };
 }

@@ -1,13 +1,11 @@
 /* ИМПОРТЫ ДОЛЖНЫ БЫТЬ САМЫМИ ПЕРВЫМИ */
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-roboto: "Roboto", sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
 }
-
-
 
 :root {
   --bg-color: black;

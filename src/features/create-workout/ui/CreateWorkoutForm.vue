@@ -9,21 +9,16 @@
   import ExerciseCard from '@features/create-workout/ui/ExerciseCard.vue';
   import SelectExerciseDialog from '@features/create-workout/ui/SelectExerciseDialog.vue';
 
+  const { onSubmit, errors, meta } = useCreateWorkout();
 
-  const {onSubmit, errors, meta} = useCreateWorkout()
-
-  const {
-    fields,
-    dialogVisible,
-    addExercise,
-  } = useManageExercise()
-
-
-
+  const { fields, dialogVisible, addExercise } = useManageExercise();
 </script>
 
 <template>
-  <form class="gap-4 py-4 w-full relative bg-inherit mx-auto bg-inherit items-center justify-between" @submit="onSubmit">
+  <form
+    class="gap-4 py-4 w-full relative bg-inherit mx-auto bg-inherit items-center justify-between"
+    @submit="onSubmit"
+  >
     <FormField v-slot="{ field }" name="title">
       <BaseInput
         clearable
@@ -38,9 +33,9 @@
 
     <div class="flex justify-between items-center py-4">
       <div class="flex gap-2 items-center">
-          <IconWrapper>
-            <Dumbbel :size="20" :fillColor="'var(--el-color-primary)'" />
-          </IconWrapper>
+        <IconWrapper>
+          <Dumbbel :size="20" :fillColor="'var(--el-color-primary)'" />
+        </IconWrapper>
         <span class="text-xl">Упражнения</span>
       </div>
       <el-button type="primary" @click="dialogVisible = true">+ Добавить </el-button>
@@ -48,25 +43,19 @@
     <div v-for="(field, idx) in fields" :key="field.key">
       <ExerciseCard :exercise="field.value" :index="idx" />
     </div>
-    <div v-if="meta.touched && errors.exercises"
-         class="text-red-500 text-sm mb-3">
+    <div v-if="meta.touched && errors.exercises" class="text-red-500 text-sm mb-3">
       {{ errors.exercises }}
     </div>
 
     <div class="fixed bottom-0 left-0 w-full z-20 bg-inherit border-t">
       <div class="p-4">
-        <el-button
-          type="primary"
-          native-type="submit"
-          class="w-full"
-        >
+        <el-button type="primary" native-type="submit" class="w-full">
           Сохранить тренировку
         </el-button>
       </div>
     </div>
-
   </form>
-  <SelectExerciseDialog @confirm="addExercise"  v-model="dialogVisible" />
+  <SelectExerciseDialog @confirm="addExercise" v-model="dialogVisible" />
 
-<!--  <ExerciseSelectDialog/>-->
+  <!--  <ExerciseSelectDialog/>-->
 </template>

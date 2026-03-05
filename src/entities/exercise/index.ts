@@ -1,4 +1,1 @@
-export {type Exercise, exerciseSchema } from './lib/exerciseSchema';
-
-
-
+export { type Exercise, exerciseSchema } from './lib/exerciseSchema';

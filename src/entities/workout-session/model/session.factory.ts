@@ -1,17 +1,10 @@
-import type { WorkoutTemplate } from '@/entities/workout'
-import { v4 as uuidv4, } from 'uuid';
+import type { WorkoutTemplate } from '@/entities/workout';
+import { v4 as uuidv4 } from 'uuid';
 
-import type {
-  WorkoutSession,
-  WorkoutPhase,
-  WorkPhase,
-  RestPhase,
-} from './session.types'
+import type { WorkoutSession, WorkoutPhase, WorkPhase, RestPhase } from './session.types';
 
-export function createWorkoutSession(
-  template: WorkoutTemplate
-): WorkoutSession {
-  const phases: WorkoutPhase[] = []
+export function createWorkoutSession(template: WorkoutTemplate): WorkoutSession {
+  const phases: WorkoutPhase[] = [];
 
   template.exercises.forEach((exercise, exerciseIndex) => {
     for (let set = 1; set <= exercise.sets; set++) {
@@ -28,9 +21,9 @@ export function createWorkoutSession(
         targetReps: exercise.reps,
         completedReps: 0,
         duration: exercise.workTimer ?? undefined,
-      }
+      };
 
-      phases.push(workPhase)
+      phases.push(workPhase);
 
       /**
        * REST PHASE
@@ -45,12 +38,12 @@ export function createWorkoutSession(
           exerciseTitle: exercise.title,
           setNumber: set,
           duration: 5,
-        }
+        };
 
-        phases.push(restPhase)
+        phases.push(restPhase);
       }
     }
-  })
+  });
 
   return {
     id: uuidv4(),
@@ -61,5 +54,5 @@ export function createWorkoutSession(
     status: 'idle',
     currentPhaseIndex: 0,
     phases,
-  }
+  };
 }

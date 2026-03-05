@@ -1,7 +1,6 @@
 import z from 'zod';
 import { exerciseSchema } from '@entities/exercise';
 
-
 export const workoutSchema = z.object({
   title: z
     .string()
@@ -12,5 +11,3 @@ export const workoutSchema = z.object({
 
 // Тип данных формы на основе схемы
 export type WorkoutTemplate = z.infer<typeof workoutSchema>;
-
-

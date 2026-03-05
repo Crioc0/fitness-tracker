@@ -1,9 +1,7 @@
 <template>
   <div class="bg-gray-950 text-white flex flex-col items-center justify-center py-6">
     <div class="w-full max-w-md bg-gray-900 rounded-2xl shadow-xl p-4 space-y-6">
-      <h2 class="text-2xl font-semibold tracking-wide text-center">
-        Выберите тренировку
-      </h2>
+      <h2 class="text-2xl font-semibold tracking-wide text-center">Выберите тренировку</h2>
 
       <ul class="space-y-3">
         <li
@@ -13,13 +11,14 @@
           @click="select(workout)"
         >
           <h3 class="text-lg font-medium">{{ workout.title }}</h3>
-          <p class="text-sm text-gray-400">
-            {{ workout.exercises.length }} упражнений
-          </p>
+          <p class="text-sm text-gray-400">{{ workout.exercises.length }} упражнений</p>
         </li>
       </ul>
 
-      <div v-if="workoutTemplatesStore.workoutTemplates.length === 0" class="text-center text-gray-400">
+      <div
+        v-if="workoutTemplatesStore.workoutTemplates.length === 0"
+        class="text-center text-gray-400"
+      >
         Тренировок не найдено
       </div>
     </div>
@@ -27,16 +26,15 @@
 </template>
 
 <script setup lang="ts">
-import type { WorkoutTemplate } from '@entities/workout';
-import { useRouter } from 'vue-router';
-import { useSelectWorkout } from '../model/useSelectWorkout.ts';
+  import type { WorkoutTemplate } from '@entities/workout';
+  import { useRouter } from 'vue-router';
+  import { useSelectWorkout } from '../model/useSelectWorkout.ts';
 
-const { selectWorkout,workoutTemplatesStore } = useSelectWorkout();
-const router = useRouter();
+  const { selectWorkout, workoutTemplatesStore } = useSelectWorkout();
+  const router = useRouter();
 
-async function select(workout: WorkoutTemplate) {
-  selectWorkout(workout);
-  await router.push({ name: 'run-workout' });
-}
-
+  async function select(workout: WorkoutTemplate) {
+    selectWorkout(workout);
+    await router.push({ name: 'run-workout' });
+  }
 </script>

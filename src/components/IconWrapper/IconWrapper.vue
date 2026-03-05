@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
   const { size = 8 } = defineProps<{
     size?: 6 | 8 | 10 | 12;
   }>();

@@ -14,8 +14,7 @@ export const useExerciseStore = defineStore('exercise', () => {
       const { data } = await getAll();
       exercises.value = data;
     } catch (error: unknown) {
-      errorMessage.value =
-        error instanceof Error ? error.message : 'Unexpected error'
+      errorMessage.value = error instanceof Error ? error.message : 'Unexpected error';
     } finally {
       isLoading.value = false;
     }
@@ -25,6 +24,6 @@ export const useExerciseStore = defineStore('exercise', () => {
     getAllExercises,
     exercises,
     isLoading,
-    errorMessage
+    errorMessage,
   };
 });

@@ -1,20 +1,17 @@
-
 <script lang="ts" setup>
+  const model = defineModel<string>({
+    required: true,
+  });
 
-const model = defineModel<string>({
-  required: true
-});
-
-const props = defineProps<{
-  label?: string;
-  size?: 'large' | 'default' | 'small';
-  placeholder?: string;
-  disabled?: boolean;
-  clearable?: boolean;
-  readonly?: boolean;
-  autofocus?: boolean;
-}>();
-
+  const props = defineProps<{
+    label?: string;
+    size?: 'large' | 'default' | 'small';
+    placeholder?: string;
+    disabled?: boolean;
+    clearable?: boolean;
+    readonly?: boolean;
+    autofocus?: boolean;
+  }>();
 </script>
 
 <template>

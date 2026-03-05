@@ -1,7 +1,7 @@
 <script lang="ts" setup>
   const model = defineModel();
   export type MyInputNumberProps = { name: string; label: string };
- const props = defineProps<{
+  const props = defineProps<{
     label?: string;
     controls?: boolean;
     error?: string;
@@ -9,7 +9,6 @@
     min?: number;
     max?: number;
   }>();
-
 </script>
 
 <template>
@@ -23,7 +22,7 @@
       class="my-input-number"
       :class="{
         'is-error': error,
-        'without-controls': !controls
+        'without-controls': !controls,
       }"
     />
     <small v-if="error && showError" class="error-message">
@@ -33,24 +32,22 @@
 </template>
 
 <style scoped>
-:deep(.el-input) {
-  --el-input-inner-height: 32px;
-}
+  :deep(.el-input) {
+    --el-input-inner-height: 32px;
+  }
 
+  /* Можно задать другую ширину для режима без controls */
+  .without-controls {
+    width: 72px; /* или любая другая ширина */
+  }
 
+  .is-error > :deep(.el-input) {
+    --el-input-border-color: #f56c6c;
+  }
 
-/* Можно задать другую ширину для режима без controls */
-.without-controls {
-  width: 72px; /* или любая другая ширина */
-}
-
-.is-error>:deep(.el-input) {
-  --el-input-border-color: #f56c6c;
-}
-
-.error-message {
-  color: #f56c6c;
-  font-size: 12px;
-  margin-top: 4px;
-}
+  .error-message {
+    color: #f56c6c;
+    font-size: 12px;
+    margin-top: 4px;
+  }
 </style>

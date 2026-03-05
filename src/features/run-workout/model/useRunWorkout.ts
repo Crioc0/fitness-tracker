@@ -7,63 +7,56 @@ import { loadPhaseIndex, saveCompleteReps, savePhaseIndex } from './persistence'
 import { useTimer } from './useTimer';
 import { useWorkoutSessionStore } from '@entities/workout-session/model/workout-session.store.ts';
 
-
 export const useRunWorkout = (workout: WorkoutTemplate) => {
-
-
   /* ------------------------------------------
    Session
 ------------------------------------------ */
 
   const workoutSession = createWorkoutSession(workout);
-  const workoutSessionStore = useWorkoutSessionStore()
+  const workoutSessionStore = useWorkoutSessionStore();
 
   const currentPhaseIndex = ref(0);
 
   const currentPhase = computed<WorkoutPhase | undefined>(() => {
-    return workoutSession.phases[currentPhaseIndex.value]
-  })
+    return workoutSession.phases[currentPhaseIndex.value];
+  });
 
   const workPhase = computed(() =>
-    currentPhase.value?.type === 'work'
-      ? currentPhase.value
-      : undefined
-  )
+    currentPhase.value?.type === 'work' ? currentPhase.value : undefined
+  );
 
   const restPhase = computed(() =>
-    currentPhase.value?.type === 'rest'
-      ? currentPhase.value
-      : undefined
-  )
+    currentPhase.value?.type === 'rest' ? currentPhase.value : undefined
+  );
 
-  const actualReps = ref<number>(0)
+  const actualReps = ref<number>(0);
 
   const finishWorkout = async () => {
-    const dto = buildFinishedWorkoutDTO(workoutSession)
-    await workoutSessionStore.finishWorkoutSession(dto)
-  }
+    const dto = buildFinishedWorkoutDTO(workoutSession);
+    await workoutSessionStore.finishWorkoutSession(dto);
+  };
 
   async function next() {
-    const phase = currentPhase.value
-    if (!phase) return
+    const phase = currentPhase.value;
+    if (!phase) return;
 
     // save completed reps
     if (phase.type === 'work') {
-      await saveCompleteReps(currentPhaseIndex.value, actualReps.value)
+      await saveCompleteReps(currentPhaseIndex.value, actualReps.value);
 
       if ('completedReps' in phase) {
-        phase.completedReps = actualReps.value
+        phase.completedReps = actualReps.value;
       }
 
-      actualReps.value = 0
+      actualReps.value = 0;
     }
 
     // move forward or finish
     if (currentPhaseIndex.value < workoutSession.phases.length - 1) {
-      currentPhaseIndex.value++
-      await savePhaseIndex(currentPhaseIndex.value)
+      currentPhaseIndex.value++;
+      await savePhaseIndex(currentPhaseIndex.value);
     } else {
-      finishWorkout()
+      finishWorkout();
     }
   }
 
@@ -77,7 +70,7 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
    Drift-free timer
 ------------------------------------------ */
 
-  const {remaining,start,stop}=useTimer(next)
+  const { remaining, start, stop } = useTimer(next);
 
   /* ------------------------------------------
    React to phase changes
@@ -102,17 +95,16 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
       }
 
       if (phase.type === 'work') {
-        actualReps.value = workPhase.value?.targetReps ?? 0
+        actualReps.value = workPhase.value?.targetReps ?? 0;
       }
     },
     { immediate: true }
   );
 
-
   onMounted(async () => {
-    const savedIndex = await loadPhaseIndex()
+    const savedIndex = await loadPhaseIndex();
     if (typeof savedIndex === 'number') {
-      currentPhaseIndex.value = savedIndex
+      currentPhaseIndex.value = savedIndex;
     }
   });
 
@@ -132,6 +124,6 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
     remaining,
 
     next,
-    prev
-  }
-}
+    prev,
+  };
+};

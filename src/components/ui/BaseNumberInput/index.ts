@@ -1,3 +1,3 @@
-import BaseNumberInput from './BaseNumberInput.vue'
+import BaseNumberInput from './BaseNumberInput.vue';
 
-export default BaseNumberInput
+export default BaseNumberInput;

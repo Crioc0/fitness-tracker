@@ -23,7 +23,7 @@ export function useTimer(onFinish: () => void) {
 
     if (diff <= 0) {
       stop();
-      onFinish()
+      onFinish();
       return;
     }
 
@@ -56,6 +56,8 @@ export function useTimer(onFinish: () => void) {
   // }
 
   return {
-    start, remaining,stop
-  }
+    start,
+    remaining,
+    stop,
+  };
 }

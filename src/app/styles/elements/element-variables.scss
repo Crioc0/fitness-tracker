@@ -7,16 +7,15 @@
   ),
 
   $input: (
-    'text-color' : 'white',
+    'text-color': 'white',
     'bg-color': transparent,
     'border-color': 'gray',
     'focus-border-color': #409eff,
-    'active-bg-color' : #409eff,
+    'active-bg-color': #409eff,
     'border-radius': 8px,
-    'border' :2px,
+    'border': 2px,
     'padding-horizontal': 15px,
   )
 );
-
 
 @use 'element-plus/theme-chalk/src/index.scss' as *;

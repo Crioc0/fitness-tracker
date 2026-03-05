@@ -1,3 +1,3 @@
-import BaseInput from './BaseInput.vue'
+import BaseInput from './BaseInput.vue';
 
-export default BaseInput
+export default BaseInput;

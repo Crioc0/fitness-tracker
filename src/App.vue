@@ -3,7 +3,7 @@
   // import * as zod from 'zod';
   // import { toTypedSchema } from '@vee-validate/zod';
   import TitleNav from '@/components/TitleNav/TitleNav.vue';
-  import { useRoute } from 'vue-router'
+  import { useRoute } from 'vue-router';
   import { computed } from 'vue';
 
   // type InputNumberProps = {
@@ -34,28 +34,27 @@
   //   },
   // });
 
-
-  const route = useRoute()
+  const route = useRoute();
 
   const pageTitle = computed<string>(() => {
-    return (route.meta?.title as string) || 'Главная'
-  })
+    return (route.meta?.title as string) || 'Главная';
+  });
 </script>
 
 <template>
-  <div class="min-h-screen  text-white">
+  <div class="min-h-screen text-white">
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-      <TitleNav :title="pageTitle"/>
+      <TitleNav :title="pageTitle" />
     </header>
 
     <!-- Timer Bar -->
-<!--    <div class="fixed top-20 left-1/2 transform -translate-x-1/2 z-40">-->
-<!--      <TimerBar />-->
-<!--    </div>-->
+    <!--    <div class="fixed top-20 left-1/2 transform -translate-x-1/2 z-40">-->
+    <!--      <TimerBar />-->
+    <!--    </div>-->
 
     <main>
-      <div class="container bg-black min-w-[90vh] min-w-[325px]  mx-auto flex flex-col  px-2">
+      <div class="container bg-black min-w-[90vh] min-w-[325px] mx-auto flex flex-col px-2">
         <router-view />
       </div>
     </main>

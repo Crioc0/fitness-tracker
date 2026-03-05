@@ -6,9 +6,9 @@ export function useManageExercise() {
   const { fields, push, remove } = useFieldArray<Exercise>('exercises');
   const dialogVisible = ref(false);
   const exerciseTitle = ref('');
-  const addExercise = (exerciseTitle:string | string[]) => {
+  const addExercise = (exerciseTitle: string | string[]) => {
     for (const item of exerciseTitle) {
-      if (!item.trim()) return
+      if (!item.trim()) return;
       push({
         title: item,
         sets: 1,
