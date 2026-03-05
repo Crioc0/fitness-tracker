@@ -2,7 +2,7 @@
   // import {  useForm } from 'vee-validate';
   // import * as zod from 'zod';
   // import { toTypedSchema } from '@vee-validate/zod';
-  import TitleNav from '@/components/TitleNav/TitleNav.vue';
+  import TitleNav from '@shared/ui/TitleNav'
   import { useRoute } from 'vue-router';
   import { computed } from 'vue';
 

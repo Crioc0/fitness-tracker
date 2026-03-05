@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-  import BaseInput from '@/components/ui/BaseInput';
+  import BaseInput from '@/shared/ui/BaseInput';
   import Dumbbel from 'vue-material-design-icons/Dumbbell.vue';
 
-  import FormField from '@/components/ui/FormField';
-  import IconWrapper from '@/components/IconWrapper/IconWrapper.vue';
+  import FormField from '@/shared/ui/FormField';
+  import IconWrapper from '@/shared/ui/IconWrapper/IconWrapper.vue';
   import { useManageExercise } from '@features/create-workout/model/useManageExercise.ts';
   import { useCreateWorkout } from '@features/create-workout/model/useCreateWorkout.ts';
   import ExerciseCard from '@features/create-workout/ui/ExerciseCard.vue';

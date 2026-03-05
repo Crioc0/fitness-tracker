@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import type { WorkoutTemplate } from '@entities/workout';
-  import BaseNumberInput from '@/components/ui/BaseNumberInput';
+  import BaseNumberInput from '@/shared/ui/BaseNumberInput';
   import { useRunWorkout } from '../model/useRunWorkout';
 
   const props = defineProps<{

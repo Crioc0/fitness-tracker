@@ -3,10 +3,10 @@
   import TimerSand from 'vue-material-design-icons/TimerSand.vue';
   import LightningBolt from 'vue-material-design-icons/LightningBolt.vue';
 
-  import BaseNumberInput from '@/components/ui/BaseNumberInput';
+  import BaseNumberInput from '@/shared/ui/BaseNumberInput';
   import { useField } from 'vee-validate';
   import { computed } from 'vue';
-  import FormField from '@/components/ui/FormField/FormField.vue';
+  import FormField from '@shared/ui/FormField';
   import { useManageExercise } from '@features/create-workout/model/useManageExercise.ts';
   import type { Exercise } from '@entities/exercise';
 

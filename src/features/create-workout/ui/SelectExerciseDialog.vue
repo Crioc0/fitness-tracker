@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { ref } from 'vue';
-  import BaseDialog from '@shared/ui/BaseDialog.vue';
+  import BaseDialog from '@shared/ui/BaseDialog';
   import ExerciseSelection from '@features/select-exercise';
 
   const dialogVisible = defineModel<boolean>();

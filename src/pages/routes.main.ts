@@ -1,5 +1,5 @@
-import WorkoutCreationPage from '@pages/WorkoutCreationPage.vue';
-import WorkoutSelectionPage from '@pages/WorkoutSelectionPage.vue';
+import WorkoutCreationPage from './WorkoutCreationPage.vue';
+import WorkoutSelectionPage from './WorkoutSelectionPage.vue';
 import RunWorkoutPage from './RunWorkoutPage.vue';
 
 export const mainRoutes = [

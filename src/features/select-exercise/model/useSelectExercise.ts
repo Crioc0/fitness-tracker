@@ -1,5 +1,5 @@
 import { onMounted } from 'vue';
-import { useExerciseStore } from '@entities/exercise/model/exercise.store.ts';
+import { useExerciseStore } from '@entities/exercise';
 
 export const useSelectExercise = () => {
   const exercisesStore = useExerciseStore();
