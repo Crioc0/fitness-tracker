@@ -1,7 +1,7 @@
 <script lang="ts" setup>
   const model = defineModel();
   export type MyInputNumberProps = { name: string; label: string };
-  const props = defineProps<{
+  defineProps<{
     label?: string;
     controls?: boolean;
     error?: string;

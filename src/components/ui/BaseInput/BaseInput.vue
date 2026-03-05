@@ -3,7 +3,7 @@
     required: true,
   });
 
-  const props = defineProps<{
+  defineProps<{
     label?: string;
     size?: 'large' | 'default' | 'small';
     placeholder?: string;
