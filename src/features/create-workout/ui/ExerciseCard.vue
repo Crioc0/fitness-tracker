@@ -1,14 +1,17 @@
 <script setup lang="ts">
-  import TrashCanOutline from 'vue-material-design-icons/TrashCanOutline.vue';
-  import TimerSand from 'vue-material-design-icons/TimerSand.vue';
+  import { computed } from 'vue';
   import LightningBolt from 'vue-material-design-icons/LightningBolt.vue';
+  import TimerSand from 'vue-material-design-icons/TimerSand.vue';
+  import TrashCanOutline from 'vue-material-design-icons/TrashCanOutline.vue';
+  import { useField } from 'vee-validate';
+
+  import type { Exercise } from '@entities/exercise';
+
+  import FormField from '@shared/ui/FormField';
+
+  import { useManageExercise } from '../model/useManageExercise.ts';
 
   import BaseNumberInput from '@/shared/ui/BaseNumberInput';
-  import { useField } from 'vee-validate';
-  import { computed } from 'vue';
-  import FormField from '@shared/ui/FormField';
-  import { useManageExercise } from '@features/create-workout/model/useManageExercise.ts';
-  import type { Exercise } from '@entities/exercise';
 
   const props = defineProps<{
     exercise: Exercise;

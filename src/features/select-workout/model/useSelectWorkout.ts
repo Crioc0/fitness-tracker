@@ -1,5 +1,6 @@
-import type { WorkoutTemplate } from '@entities/workout';
 import { ref } from 'vue';
+
+import type { WorkoutTemplate } from '@entities/workout';
 import { useWorkoutTemplatesStore } from '@entities/workout';
 
 const selectedWorkout = ref<WorkoutTemplate | null>(null);

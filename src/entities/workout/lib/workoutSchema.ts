@@ -1,4 +1,5 @@
 import z from 'zod';
+
 import { exerciseSchema } from '@entities/exercise';
 
 export const workoutSchema = z.object({

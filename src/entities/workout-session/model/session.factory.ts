@@ -1,7 +1,8 @@
-import type { WorkoutTemplate } from '@/entities/workout';
 import { v4 as uuidv4 } from 'uuid';
 
-import type { WorkoutSession, WorkoutPhase, WorkPhase, RestPhase } from './session.types';
+import type { RestPhase, WorkoutPhase, WorkoutSession, WorkPhase } from './session.types';
+
+import type { WorkoutTemplate } from '@/entities/workout';
 
 export function createWorkoutSession(template: WorkoutTemplate): WorkoutSession {
   const phases: WorkoutPhase[] = [];

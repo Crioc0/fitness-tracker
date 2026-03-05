@@ -1,6 +1,6 @@
+import RunWorkoutPage from './RunWorkoutPage.vue';
 import WorkoutCreationPage from './WorkoutCreationPage.vue';
 import WorkoutSelectionPage from './WorkoutSelectionPage.vue';
-import RunWorkoutPage from './RunWorkoutPage.vue';
 
 export const mainRoutes = [
   {

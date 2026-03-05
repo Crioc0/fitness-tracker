@@ -26,8 +26,10 @@
 </template>
 
 <script setup lang="ts">
-  import type { WorkoutTemplate } from '@entities/workout';
   import { useRouter } from 'vue-router';
+
+  import type { WorkoutTemplate } from '@entities/workout';
+
   import { useSelectWorkout } from '../model/useSelectWorkout.ts';
 
   const { selectWorkout, workoutTemplatesStore } = useSelectWorkout();

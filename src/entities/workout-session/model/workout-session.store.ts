@@ -1,7 +1,9 @@
-import { defineStore } from 'pinia';
-import { create } from '../api/workout-session.api.ts';
 import { ref } from 'vue';
-import type { FinishedWorkoutDTO } from '@entities/workout-session'
+import { defineStore } from 'pinia';
+
+import type { FinishedWorkoutDTO } from '@entities/workout-session';
+
+import { create } from '../api/workout-session.api.ts';
 
 export const useWorkoutSessionStore = defineStore('workout-session', () => {
   const isLoading = ref(false);

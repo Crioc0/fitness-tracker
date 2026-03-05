@@ -1,6 +1,7 @@
 <script lang="ts" setup>
   import { RouterLink } from 'vue-router';
-  import CreateWorkoutForm from '@features/create-workout/ui/CreateWorkoutForm.vue';
+
+  import { CreateWorkoutForm } from '@/features/create-workout';
 </script>
 
 <template>

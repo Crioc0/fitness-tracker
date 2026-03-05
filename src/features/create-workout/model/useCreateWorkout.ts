@@ -1,8 +1,10 @@
-import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
+import { useForm } from 'vee-validate';
+
 import { workoutSchema, type WorkoutTemplate } from '@entities/workout';
-import { normalizeEmptyStrings } from '@shared/lib/helpers';
 import { useWorkoutTemplatesStore } from '@entities/workout';
+
+import { normalizeEmptyStrings } from '@shared/lib/helpers';
 
 export function useCreateWorkout() {
   const { handleSubmit, errors, meta, resetForm } = useForm({

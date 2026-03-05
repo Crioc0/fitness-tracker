@@ -2,9 +2,10 @@
   // import {  useForm } from 'vee-validate';
   // import * as zod from 'zod';
   // import { toTypedSchema } from '@vee-validate/zod';
-  import TitleNav from '@shared/ui/TitleNav'
-  import { useRoute } from 'vue-router';
   import { computed } from 'vue';
+  import { useRoute } from 'vue-router';
+
+  import TitleNav from '@shared/ui/TitleNav';
 
   // type InputNumberProps = {
   //   number1: number;

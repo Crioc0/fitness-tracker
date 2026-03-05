@@ -1,6 +1,7 @@
-import type { Exercise } from '@entities/exercise';
-import { useFieldArray } from 'vee-validate';
 import { ref } from 'vue';
+import { useFieldArray } from 'vee-validate';
+
+import type { Exercise } from '@entities/exercise';
 
 export function useManageExercise() {
   const { fields, push, remove } = useFieldArray<Exercise>('exercises');

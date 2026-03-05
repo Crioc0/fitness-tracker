@@ -1,11 +1,13 @@
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
+
 import type { WorkoutTemplate } from '@entities/workout';
 import type { WorkoutPhase } from '@entities/workout-session';
 import { createWorkoutSession } from '@entities/workout-session';
-import { computed, ref, watch, onUnmounted, onMounted } from 'vue';
 import { buildFinishedWorkoutDTO } from '@entities/workout-session';
+import { useWorkoutSessionStore } from '@entities/workout-session';
+
 import { loadPhaseIndex, saveCompleteReps, savePhaseIndex } from './persistence';
 import { useTimer } from './useTimer';
-import { useWorkoutSessionStore } from '@entities/workout-session';
 
 export const useRunWorkout = (workout: WorkoutTemplate) => {
   /* ------------------------------------------

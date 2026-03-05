@@ -1,3 +1,3 @@
-import ExerciseSelection from '@features/select-exercise/ui/ExerciseSelection.vue';
+import ExerciseSelection from './ui/ExerciseSelection.vue';
 
 export default ExerciseSelection;

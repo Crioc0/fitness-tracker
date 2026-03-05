@@ -2,8 +2,8 @@
   import { computed, watch } from 'vue';
   import { useRouter } from 'vue-router';
 
-  import { useSelectWorkout } from '@/features/select-workout/model/useSelectWorkout';
   import ExerciseForm from '@/features/run-workout/ui/ExerciseForm.vue';
+  import { useSelectWorkout } from '@/features/select-workout/model/useSelectWorkout';
 
   const { selectedWorkout } = useSelectWorkout();
 
