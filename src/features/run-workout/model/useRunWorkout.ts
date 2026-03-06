@@ -13,7 +13,6 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
   /* ------------------------------------------
    Session
 ------------------------------------------ */
-
   const workoutSession = createWorkoutSession(workout);
   const workoutSessionStore = useWorkoutSessionStore();
 
@@ -44,17 +43,18 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
 
     // save completed reps
     if (phase.type === 'work') {
-      await saveCompleteReps(currentPhaseIndex.value, actualReps.value);
+      await saveCompleteReps(currentPhase.value.exerciseTitle!, actualReps.value);
 
       if ('completedReps' in phase) {
         phase.completedReps = actualReps.value;
+        console.log(workoutSession);
       }
 
       actualReps.value = 0;
     }
 
     // move forward or finish
-    if (currentPhaseIndex.value < workoutSession.phases.length - 1) {
+    if (currentPhaseIndex.value < workoutSession.phases.length) {
       currentPhaseIndex.value++;
       await savePhaseIndex(currentPhaseIndex.value);
     } else {
@@ -127,5 +127,6 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
 
     next,
     prev,
+    buildFinishedWorkoutDTO,
   };
 };

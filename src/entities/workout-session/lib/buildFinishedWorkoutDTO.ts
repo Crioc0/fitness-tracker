@@ -19,6 +19,7 @@ export function buildFinishedWorkoutDTO(session: WorkoutSession) {
         setNumber: phase.setNumber,
         plannedReps: phase.targetReps,
         actualReps: phase.completedReps ?? phase.targetReps,
+        weight: phase.weight,
       });
     }
 

@@ -13,6 +13,7 @@ export const FinishedWorkoutDTOSchema = z.object({
       sets: z.array(
         z.object({
           setNumber: z.number(),
+          weight: z.number(),
           plannedReps: z.number().optional(),
           actualReps: z.number().optional(),
           restDuration: z.number().optional(),

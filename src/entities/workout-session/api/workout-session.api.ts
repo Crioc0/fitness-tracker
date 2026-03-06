@@ -6,6 +6,7 @@ import {
 } from '../model/finished-workout.schema';
 
 export const create = async (dto: FinishedWorkoutDTO) => {
-  FinishedWorkoutDTOSchema.parse(dto);
+  console.log(FinishedWorkoutDTOSchema.parse(dto));
+
   return await httpClient.post('/workout-sessions', dto);
 };

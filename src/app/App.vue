@@ -55,7 +55,7 @@
     <!--    </div>-->
 
     <main>
-      <div class="container bg-black min-w-81.25 mx-auto flex flex-col px-2">
+      <div class="container min-w-81.25 mx-auto flex flex-col px-2">
         <router-view />
       </div>
     </main>

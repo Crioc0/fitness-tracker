@@ -18,6 +18,7 @@ export function createWorkoutSession(template: WorkoutTemplate): WorkoutSession 
         type: 'work',
         exerciseId: `${exerciseIndex}`,
         exerciseTitle: exercise.title,
+        weight: exercise.weight,
         setNumber: set,
         targetReps: exercise.reps,
         completedReps: 0,

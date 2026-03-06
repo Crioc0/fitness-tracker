@@ -9,6 +9,7 @@ export interface WorkPhase {
   type: 'work';
   exerciseId: string;
   exerciseTitle: string;
+  weight: number;
   setNumber: number;
   targetReps: number;
   duration?: number;

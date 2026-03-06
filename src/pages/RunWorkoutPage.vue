@@ -15,15 +15,7 @@
   }
 
   const workout = computed(() => {
-    return (
-      selectedWorkout.value || {
-        title: 'Тест',
-        exercises: [
-          { title: '123', reps: 10, sets: 3, restTimer: 60 },
-          { title: '123512', reps: 10, sets: 3, restTimer: 60 },
-        ],
-      }
-    );
+    return selectedWorkout.value;
   });
 
   // на случай, если выбор поменялся после монтирования
@@ -35,5 +27,6 @@
 </script>
 
 <template>
-  <ExerciseForm :workout />
+  <ExerciseForm v-if="workout" :workout />
+  <div v-else>"Ошибка"</div>
 </template>

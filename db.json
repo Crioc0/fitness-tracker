@@ -46,6 +46,330 @@
           ]
         }
       ]
+    },
+    {
+      "id": "9eb8",
+      "sessionId": "a518b403-9872-4aa2-a607-f08d93c04084",
+      "workoutId": "56edff1b-2251-4f2f-bff9-cd00783126a9",
+      "startedAt": 1772787016064,
+      "finishedAt": 1772787021469,
+      "totalDuration": 5405,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Тест",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 13,
+              "actualReps": 2,
+              "weight": 100,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 2,
+              "plannedReps": 13,
+              "actualReps": 3,
+              "weight": 100,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 3,
+              "plannedReps": 13,
+              "actualReps": 3,
+              "weight": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eb57",
+      "sessionId": "93927793-aef5-4f9a-9859-ba74a21a6cc9",
+      "workoutId": "fb2fff70-52fe-4366-bc6f-4e92a1b90569",
+      "startedAt": 1772790860826,
+      "finishedAt": 1772790880176,
+      "totalDuration": 19350,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Тест",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 13,
+              "actualReps": 0,
+              "weight": 100,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 2,
+              "plannedReps": 13,
+              "actualReps": 0,
+              "weight": 100,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 3,
+              "plannedReps": 13,
+              "actualReps": 0,
+              "weight": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1f1",
+      "sessionId": "2557ff7b-d0cb-4dd3-8bbd-66eabb135410",
+      "workoutId": "8b22e3df-88b9-43fc-b747-868ab60f3f3d",
+      "startedAt": 1772791147848,
+      "finishedAt": 1772791149558,
+      "totalDuration": 1710,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Тест",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 13,
+              "actualReps": 13,
+              "weight": 100,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 2,
+              "plannedReps": 13,
+              "actualReps": 13,
+              "weight": 100,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 3,
+              "plannedReps": 13,
+              "actualReps": 13,
+              "weight": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7dea",
+      "sessionId": "bf47e591-9fbc-49db-b370-f99ab3cba9b9",
+      "workoutId": "941b32dd-987f-456b-a619-738fd3e2eb93",
+      "startedAt": 1772791162449,
+      "finishedAt": 1772791188451,
+      "totalDuration": 26002,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Жим штанги на наклонной",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 100,
+              "restDuration": 5
+            }
+          ]
+        },
+        {
+          "exerciseId": "1",
+          "exerciseTitle": "Сведение в кроссовере верх",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 100,
+              "restDuration": 5
+            }
+          ]
+        },
+        {
+          "exerciseId": "2",
+          "exerciseTitle": "Жим гантелей 45",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f096",
+      "sessionId": "6e9eba77-71cb-4937-9e3b-390eb44ec366",
+      "workoutId": "ea37be0a-66e1-4160-94ca-303be1096962",
+      "startedAt": 1772791286893,
+      "finishedAt": 1772791307074,
+      "totalDuration": 20181,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Тест",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 13,
+              "actualReps": 13,
+              "weight": 100,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 2,
+              "plannedReps": 13,
+              "actualReps": 13,
+              "weight": 100,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 3,
+              "plannedReps": 13,
+              "actualReps": 13,
+              "weight": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9d3a",
+      "sessionId": "fb12224e-37a0-4a28-9fb5-fabcd76c65d0",
+      "workoutId": "e58d4d80-bb10-468b-8c99-9cb5bac36456",
+      "startedAt": 1772791710441,
+      "finishedAt": 1772791729527,
+      "totalDuration": 19086,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Жим штанги на наклонной",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 999,
+              "restDuration": 5
+            }
+          ]
+        },
+        {
+          "exerciseId": "1",
+          "exerciseTitle": "Сведение в кроссовере верх",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 999,
+              "restDuration": 5
+            }
+          ]
+        },
+        {
+          "exerciseId": "2",
+          "exerciseTitle": "Жим гантелей 45",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d8cb",
+      "sessionId": "8c2aaaca-4cb1-475e-b69d-32bd358be7f5",
+      "workoutId": "da8cdfec-5930-4cbb-a60d-b46ce40379aa",
+      "startedAt": 1772791755132,
+      "finishedAt": 1772791762407,
+      "totalDuration": 7275,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Тест",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 13,
+              "actualReps": 2,
+              "weight": 100,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 2,
+              "plannedReps": 13,
+              "actualReps": 2,
+              "weight": 100,
+              "restDuration": 5
+            },
+            {
+              "setNumber": 3,
+              "plannedReps": 13,
+              "actualReps": 2,
+              "weight": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add8",
+      "sessionId": "7d4573c9-4ac4-49bf-8ebf-f39196c72b72",
+      "workoutId": "8d8c01d4-28a7-446a-ad9e-c49d76b59472",
+      "startedAt": 1772791783262,
+      "finishedAt": 1772791807729,
+      "totalDuration": 24467,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Жим штанги на наклонной",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 12,
+              "weight": 1,
+              "restDuration": 5
+            }
+          ]
+        },
+        {
+          "exerciseId": "1",
+          "exerciseTitle": "Сведение в кроссовере верх",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 2,
+              "restDuration": 5
+            }
+          ]
+        },
+        {
+          "exerciseId": "2",
+          "exerciseTitle": "Жим гантелей 45",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 3
+            }
+          ]
+        }
+      ]
     }
   ],
   "workout-templates": [
@@ -57,6 +381,7 @@
           "title": "Тест",
           "reps": 13,
           "sets": 3,
+          "weight": 100,
           "restTimer": 60
         }
       ]
