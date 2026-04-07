@@ -17,16 +17,17 @@
 
 <template>
   <form
-    class="gap-4 py-4 w-full relative bg-inherit mx-auto bg-inherit items-center justify-between"
+    class="gap-4 py-4 w-full relative bg-inherit mx-auto items-center justify-between"
     @submit="onSubmit"
   >
-    <FormField v-slot="{ field }" name="title">
+    <FormField v-slot="{ field, error }" name="title">
       <BaseInput
         clearable
         placeholder="Название тренировки"
         size="large"
         style="width: 100%"
         v-bind="field"
+        :error="error"
       >
         <template #prefix><Dumbbel :fillColor="'var(--el-color-primary)'" /></template>
       </BaseInput>
@@ -56,6 +57,7 @@
       </div>
     </div>
   </form>
+
   <SelectExerciseDialog @confirm="addExercise" v-model="dialogVisible" />
 
   <!--  <ExerciseSelectDialog/>-->

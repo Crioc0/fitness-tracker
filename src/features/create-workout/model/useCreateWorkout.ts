@@ -15,7 +15,9 @@ export function useCreateWorkout() {
   const workoutTemplateStore = useWorkoutTemplatesStore()
 
   const onSubmit = handleSubmit(async (values) => {
+    console.log(123)
     const normalized = normalizeEmptyStrings<WorkoutTemplate>(values)
+    console.log(123)
     await workoutTemplateStore.createWorkoutTemplate(normalized)
     resetForm()
   })

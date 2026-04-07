@@ -929,6 +929,20 @@
           "restTimer": 60
         }
       ]
+    },
+    {
+      "id": "faa2",
+      "title": "Тест",
+      "exercises": [
+        {
+          "title": "Тяга верхнего блока",
+          "reps": 10,
+          "sets": 1,
+          "weight": 0,
+          "restTimer": 60,
+          "restBetweenExercises": 90
+        }
+      ]
     }
   ],
   "exercises": [

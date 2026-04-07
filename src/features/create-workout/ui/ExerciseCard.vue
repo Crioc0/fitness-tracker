@@ -40,7 +40,7 @@
       </button>
     </div>
     <div class="flex justify-center gap-2 mb-8">
-      <FormField :name="`exercises[${index}].sets`" v-slot="{ field }">
+      <FormField :name="`exercises[${index}].sets`" v-slot="{ field}">
         <BaseNumberInput v-bind="field" controls size="small" :min="1" label="Сеты" />
       </FormField>
       <FormField :name="`exercises[${index}].reps`" v-slot="{ field }">

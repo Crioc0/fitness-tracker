@@ -1,10 +1,10 @@
 <script setup lang="ts" generic="T = any">
-  import { computed } from 'vue';
-  import { useField } from 'vee-validate';
+  import { computed } from 'vue'
+  import { useField } from 'vee-validate'
 
   const props = defineProps<{
-    name: string;
-  }>();
+    name: string
+  }>()
 
   const { value, errorMessage, handleChange, handleBlur, meta } = useField<T>(
     () => props.name,
@@ -13,7 +13,7 @@
       validateOnMount: false,
       syncVModel: true,
     }
-  );
+  )
 
   const fieldProps = computed(() => ({
     modelValue: value.value,
@@ -21,7 +21,7 @@
     onBlur: handleBlur,
     error: errorMessage.value,
     meta: meta,
-  }));
+  }))
 </script>
 
 <template>
