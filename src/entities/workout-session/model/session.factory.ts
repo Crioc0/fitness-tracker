@@ -1,18 +1,25 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 
-import type { RestPhase, WorkoutPhase, WorkoutSession, WorkPhase } from './session.types';
+import type {
+  RestBetweenExercises,
+  RestPhase,
+  WorkoutPhase,
+  WorkoutSession,
+  WorkPhase,
+} from './session.types'
 
-import type { WorkoutTemplate } from '@/entities/workout';
+import type { WorkoutTemplate } from '@/entities/workout'
 
 export function createWorkoutSession(template: WorkoutTemplate): WorkoutSession {
-  const phases: WorkoutPhase[] = [];
+  const phases: WorkoutPhase[] = []
 
   template.exercises.forEach((exercise, exerciseIndex) => {
+    const isLastExercise = exerciseIndex === template.exercises.length - 1
+
     for (let set = 1; set <= exercise.sets; set++) {
-      /**
-       * WORK PHASE
-       * duration может быть undefined
-       */
+      const isLastSet = set === exercise.sets
+
+      // WORK PHASE
       const workPhase: WorkPhase = {
         id: uuidv4(),
         type: 'work',
@@ -23,29 +30,38 @@ export function createWorkoutSession(template: WorkoutTemplate): WorkoutSession 
         targetReps: exercise.reps,
         completedReps: 0,
         duration: exercise.workTimer ?? undefined,
-      };
+      }
+      phases.push(workPhase)
 
-      phases.push(workPhase);
-
-      /**
-       * REST PHASE
-       * добавляем только если это не последний подход
-       * duration обязателен
-       */
-      if (set < exercise.sets || exerciseIndex < template.exercises.length - 1) {
+      // Отдых между подходами (RestPhase)
+      if (!isLastSet) {
         const restPhase: RestPhase = {
           id: uuidv4(),
           type: 'rest',
           exerciseId: `${exerciseIndex}`,
           exerciseTitle: exercise.title,
           setNumber: set,
-          duration: 5,
-        };
+          duration: exercise.restTimer ?? 1, // используем restTimer из упражнения
+        }
+        phases.push(restPhase)
+      }
 
-        phases.push(restPhase);
+      // Отдых между упражнениями (RestBetweenExercises)
+      // Добавляем только после последнего подхода текущего упражнения
+      // и только если это не последнее упражнение
+      if (isLastSet && !isLastExercise) {
+        const restBetweenExercises: RestBetweenExercises = {
+          id: uuidv4(),
+          type: 'restBetweenExercises',
+          exerciseId: `${exerciseIndex}`,
+          exerciseTitle: exercise.title,
+          setNumber: set,
+          duration: exercise.restBetweenExercises ?? 2, // используем из шаблона
+        }
+        phases.push(restBetweenExercises)
       }
     }
-  });
+  })
 
   return {
     id: uuidv4(),
@@ -56,5 +72,5 @@ export function createWorkoutSession(template: WorkoutTemplate): WorkoutSession 
     status: 'idle',
     currentPhaseIndex: 0,
     phases,
-  };
+  }
 }

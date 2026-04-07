@@ -1,27 +1,26 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
-  import LightningBolt from 'vue-material-design-icons/LightningBolt.vue';
-  import TimerSand from 'vue-material-design-icons/TimerSand.vue';
-  import TrashCanOutline from 'vue-material-design-icons/TrashCanOutline.vue';
-  import { useField } from 'vee-validate';
+  import { computed } from 'vue'
+  import LightningBolt from 'vue-material-design-icons/LightningBolt.vue'
+  import TrashCanOutline from 'vue-material-design-icons/TrashCanOutline.vue'
+  import { useField } from 'vee-validate'
 
-  import type { Exercise } from '@entities/exercise';
+  import type { Exercise } from '@entities/exercise'
 
-  import FormField from '@shared/ui/FormField';
+  import FormField from '@shared/ui/FormField'
 
-  import { useManageExercise } from '../model/useManageExercise.ts';
+  import { useManageExercise } from '../model/useManageExercise.ts'
 
-  import BaseNumberInput from '@/shared/ui/BaseNumberInput';
+  import BaseNumberInput from '@/shared/ui/BaseNumberInput'
 
   const props = defineProps<{
-    exercise: Exercise;
-    index: number;
-  }>();
+    exercise: Exercise
+    index: number
+  }>()
 
-  const { removeExercise } = useManageExercise();
+  const { removeExercise } = useManageExercise()
 
-  const titlePath = computed(() => `exercises[${props.index}].title`);
-  const { value: title } = useField<string>(titlePath);
+  const titlePath = computed(() => `exercises[${props.index}].title`)
+  const { value: title } = useField<string>(titlePath)
 </script>
 
 <template>
@@ -40,21 +39,39 @@
         <TrashCanOutline :fillColor="'#f43f5e'" class="w-5 h-5" />
       </button>
     </div>
-    <div class="flex justify-center gap-4">
+    <div class="flex justify-center gap-2 mb-8">
       <FormField :name="`exercises[${index}].sets`" v-slot="{ field }">
-        <BaseNumberInput v-bind="field" controls size="large" :min="1" label="Сеты" />
+        <BaseNumberInput v-bind="field" controls size="small" :min="1" label="Сеты" />
       </FormField>
       <FormField :name="`exercises[${index}].reps`" v-slot="{ field }">
-        <BaseNumberInput v-bind="field" controls size="large" :min="1" label="Повторы" />
+        <BaseNumberInput v-bind="field" controls size="small" :min="1" label="Повторы" />
+      </FormField>
+      <FormField :name="`exercises[${index}].weight`" v-slot="{ field }">
+        <BaseNumberInput v-bind="field" controls size="small" :min="0" label="Вес" />
       </FormField>
     </div>
-    <el-divider />
-    <div class="flex justify-between">
-      <div class="flex gap-2">
-        <TimerSand />
-        <span>Отдых : {{ exercise.restTimer }}</span>
-      </div>
-      <span>Изменить таймер</span>
+
+    <div class="flex gap-4 justify-center px-4">
+      <FormField :name="`exercises[${index}].restTimer`" v-slot="{ field }">
+        <BaseNumberInput
+          v-bind="field"
+          controls
+          size="small"
+          :min="0"
+          label="Отдых между повторениями"
+        />
+      </FormField>
+
+      <FormField :name="`exercises[${index}].restBetweenExercises`" v-slot="{ field }">
+        <BaseNumberInput
+          v-bind="field"
+          controls
+          size="small"
+          :min="0"
+          label="Отдых между упражнениями"
+        />
+      </FormField>
     </div>
   </div>
+  <el-divider />
 </template>

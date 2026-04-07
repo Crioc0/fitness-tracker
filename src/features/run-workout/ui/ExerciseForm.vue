@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  import type { WorkoutTemplate } from '@entities/workout';
+  import type { WorkoutTemplate } from '@entities/workout'
 
-  import { useRunWorkout } from '../model/useRunWorkout';
-  import EndTrainingForm from './EndTrainingForm.vue';
+  import { useRunWorkout } from '../model/useRunWorkout'
+  import EndTrainingForm from './EndTrainingForm.vue'
 
-  import BaseNumberInput from '@/shared/ui/BaseNumberInput';
+  import BaseNumberInput from '@/shared/ui/BaseNumberInput'
 
   const props = defineProps<{
-    workout: WorkoutTemplate;
-  }>();
+    workout: WorkoutTemplate
+  }>()
 
   const {
     workoutSession,
@@ -16,21 +16,30 @@
     currentPhase,
     workPhase,
     restPhase,
+    restBetweenExercisesPhase,
     actualReps,
     remaining,
     next,
     prev,
-  } = useRunWorkout(props.workout);
+    cancelTraining,
+  } = useRunWorkout(props.workout)
 </script>
 
 <template>
   <div class="text-white flex items-center justify-center py-6">
     <div class="w-full max-w-md bg-gray-900 rounded-2xl shadow-xl p-4 space-y-6">
       <!-- Header -->
-      <div class="text-center space-y-1">
+      <div class="text-center relative flex items-center justify-center space-y-1">
         <h2 class="text-2xl font-semibold tracking-wide">
           {{ workout.title }}
         </h2>
+        <button
+          v-if="currentPhaseIndex === 0"
+          @click="cancelTraining"
+          class="absolute right-0 bg-red-400 hover:bg-red-500 transition rounded-xl py-3 px-6 font-medium opacity-95 disabled:cursor-not-allowed"
+        >
+          Сбросить
+        </button>
       </div>
 
       <!-- Phase Card -->
@@ -67,7 +76,10 @@
           </div>
 
           <!-- Timer -->
-          <div v-if="restPhase" class="text-5xl font-bold tracking-widest mt-4">
+          <div
+            v-if="restPhase || restBetweenExercisesPhase"
+            class="text-5xl font-bold tracking-widest mt-4"
+          >
             {{ remaining }}с
           </div>
         </div>
@@ -75,8 +87,7 @@
           <button
             v-if="!restPhase"
             class="flex-1 bg-gray-700 hover:bg-gray-600 transition rounded-xl py-3 font-medium"
-            @click="prev"
-            :disabled="currentPhaseIndex === 0"
+            @click="currentPhaseIndex === 0 ? cancelTraining() : prev()"
           >
             Назад
           </button>

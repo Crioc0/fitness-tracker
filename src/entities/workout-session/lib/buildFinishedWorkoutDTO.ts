@@ -1,7 +1,7 @@
-import type { WorkoutSession } from '@entities/workout-session';
+import type { WorkoutSession } from '@entities/workout-session'
 
 export function buildFinishedWorkoutDTO(session: WorkoutSession) {
-  const exercisesMap = new Map();
+  const exercisesMap = new Map()
 
   session.phases.forEach((phase) => {
     if (!exercisesMap.has(phase.exerciseId)) {
@@ -9,10 +9,10 @@ export function buildFinishedWorkoutDTO(session: WorkoutSession) {
         exerciseId: phase.exerciseId,
         exerciseTitle: phase.exerciseTitle,
         sets: [],
-      });
+      })
     }
 
-    const exercise = exercisesMap.get(phase.exerciseId);
+    const exercise = exercisesMap.get(phase.exerciseId)
 
     if (phase.type === 'work') {
       exercise.sets.push({
@@ -20,16 +20,16 @@ export function buildFinishedWorkoutDTO(session: WorkoutSession) {
         plannedReps: phase.targetReps,
         actualReps: phase.completedReps ?? phase.targetReps,
         weight: phase.weight,
-      });
+      })
     }
 
     if (phase.type === 'rest') {
-      const lastSet = exercise.sets.at(-1);
+      const lastSet = exercise.sets.at(-1)
       if (lastSet) {
-        lastSet.restDuration = phase.duration;
+        lastSet.restDuration = phase.duration
       }
     }
-  });
+  })
 
   return {
     sessionId: session.id,
@@ -38,5 +38,5 @@ export function buildFinishedWorkoutDTO(session: WorkoutSession) {
     finishedAt: Date.now(),
     totalDuration: Date.now() - session.startedAt,
     exercises: Array.from(exercisesMap.values()),
-  };
+  }
 }

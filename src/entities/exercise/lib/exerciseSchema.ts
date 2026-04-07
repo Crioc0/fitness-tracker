@@ -1,4 +1,4 @@
-import z from 'zod';
+import z from 'zod'
 
 export const exerciseSchema = z.object({
   title: z.string().min(1, 'Укажите название'),
@@ -6,8 +6,9 @@ export const exerciseSchema = z.object({
   sets: z.number().min(1, 'Количество подходов должно быть больше 0'),
   weight: z.number(),
   workTimer: z.number().optional(),
-  restTimer: z.number().min(60),
-});
+  restTimer: z.number().min(10),
+  restBetweenExercises: z.number().min(60),
+})
 
 // Тип данных формы на основе схемы
-export type Exercise = z.infer<typeof exerciseSchema>;
+export type Exercise = z.infer<typeof exerciseSchema>

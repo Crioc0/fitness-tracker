@@ -1,24 +1,26 @@
 <script lang="ts" setup>
-  const model = defineModel();
-  export type MyInputNumberProps = { name: string; label: string };
+  const model = defineModel()
+  export type MyInputNumberProps = { name: string; label: string }
   defineProps<{
-    label?: string;
-    controls?: boolean;
-    error?: string;
-    showError?: boolean;
-    min?: number;
-    max?: number;
-  }>();
+    label?: string
+    controls?: boolean
+    error?: string
+    showError?: boolean
+    min?: number
+    max?: number
+    size?: 'large' | 'medium' | 'small'
+  }>()
 </script>
 
 <template>
   <div class="flex flex-col items-center justify-between">
-    <span>{{ label }}</span>
+    <span class="text-center">{{ label }}</span>
     <el-input-number
       v-model="model"
       :controls="controls"
       :min
       :max
+      :size
       class="my-input-number"
       :class="{
         'is-error': error,

@@ -1,70 +1,76 @@
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
 
-import type { WorkoutTemplate } from '@entities/workout';
-import type { WorkoutPhase } from '@entities/workout-session';
-import { createWorkoutSession } from '@entities/workout-session';
-import { buildFinishedWorkoutDTO } from '@entities/workout-session';
-import { useWorkoutSessionStore } from '@entities/workout-session';
+import type { WorkoutTemplate } from '@entities/workout'
+import type { WorkoutPhase } from '@entities/workout-session'
+import { createWorkoutSession } from '@entities/workout-session'
+import { buildFinishedWorkoutDTO } from '@entities/workout-session'
+import { useWorkoutSessionStore } from '@entities/workout-session'
 
-import { loadPhaseIndex, saveCompleteReps, savePhaseIndex } from './persistence';
-import { useTimer } from './useTimer';
+import { clear, loadPhaseIndex, saveCompleteReps, savePhaseIndex } from './persistence'
+import { useTimer } from './useTimer'
 
 export const useRunWorkout = (workout: WorkoutTemplate) => {
   /* ------------------------------------------
    Session
 ------------------------------------------ */
-  const workoutSession = createWorkoutSession(workout);
-  const workoutSessionStore = useWorkoutSessionStore();
+  const workoutSession = createWorkoutSession(workout)
+  const router = useRouter()
+  const workoutSessionStore = useWorkoutSessionStore()
 
-  const currentPhaseIndex = ref(0);
+  const currentPhaseIndex = ref(0)
 
   const currentPhase = computed<WorkoutPhase | undefined>(() => {
-    return workoutSession.phases[currentPhaseIndex.value];
-  });
+    return workoutSession.phases[currentPhaseIndex.value]
+  })
 
   const workPhase = computed(() =>
     currentPhase.value?.type === 'work' ? currentPhase.value : undefined
-  );
+  )
 
   const restPhase = computed(() =>
     currentPhase.value?.type === 'rest' ? currentPhase.value : undefined
-  );
+  )
 
-  const actualReps = ref<number>(0);
+  const restBetweenExercisesPhase = computed(() =>
+    currentPhase.value?.type === 'restBetweenExercises' ? currentPhase.value : undefined
+  )
+
+  const actualReps = ref<number>(0)
 
   const finishWorkout = async () => {
-    const dto = buildFinishedWorkoutDTO(workoutSession);
-    await workoutSessionStore.finishWorkoutSession(dto);
-  };
+    const dto = buildFinishedWorkoutDTO(workoutSession)
+    await workoutSessionStore.finishWorkoutSession(dto)
+  }
 
   async function next() {
-    const phase = currentPhase.value;
-    if (!phase) return;
+    const phase = currentPhase.value
+    if (!phase) return
 
     // save completed reps
     if (phase.type === 'work') {
-      await saveCompleteReps(currentPhase.value.exerciseTitle!, actualReps.value);
+      await saveCompleteReps(currentPhase.value.exerciseTitle!, actualReps.value)
 
       if ('completedReps' in phase) {
-        phase.completedReps = actualReps.value;
-        console.log(workoutSession);
+        phase.completedReps = actualReps.value
+        console.log(workoutSession)
       }
 
-      actualReps.value = 0;
+      actualReps.value = 0
     }
 
     // move forward or finish
     if (currentPhaseIndex.value < workoutSession.phases.length) {
-      currentPhaseIndex.value++;
-      await savePhaseIndex(currentPhaseIndex.value);
+      currentPhaseIndex.value++
+      await savePhaseIndex(currentPhaseIndex.value)
     } else {
-      finishWorkout();
+      finishWorkout()
     }
   }
 
   function prev() {
     if (currentPhaseIndex.value > 0) {
-      currentPhaseIndex.value--;
+      currentPhaseIndex.value--
     }
   }
 
@@ -72,7 +78,12 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
    Drift-free timer
 ------------------------------------------ */
 
-  const { remaining, start, stop } = useTimer(next);
+  const { remaining, start, stop } = useTimer(next)
+
+  async function cancelTraining() {
+    await clear()
+    router.push({ name: 'workouts' })
+  }
 
   /* ------------------------------------------
    React to phase changes
@@ -81,38 +92,38 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
   watch(
     currentPhase,
     (phase) => {
-      if (!phase) return;
+      if (!phase) return
 
-      if (phase.type === 'rest') {
-        start(phase.duration);
+      if (phase.type === 'rest' || phase.type === 'restBetweenExercises') {
+        start(phase.duration)
       }
 
       if (phase.type === 'work' && phase.duration) {
-        start(phase.duration);
+        start(phase.duration)
       }
 
       if (phase.type === 'work' && !phase.duration) {
-        stop();
-        remaining.value = 0;
+        stop()
+        remaining.value = 0
       }
 
       if (phase.type === 'work') {
-        actualReps.value = workPhase.value?.targetReps ?? 0;
+        actualReps.value = workPhase.value?.targetReps ?? 0
       }
     },
     { immediate: true }
-  );
+  )
 
   onMounted(async () => {
-    const savedIndex = await loadPhaseIndex();
+    const savedIndex = await loadPhaseIndex()
     if (typeof savedIndex === 'number') {
-      currentPhaseIndex.value = savedIndex;
+      currentPhaseIndex.value = savedIndex
     }
-  });
+  })
 
   onUnmounted(() => {
-    stop();
-  });
+    stop()
+  })
 
   return {
     workoutSession,
@@ -121,6 +132,7 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
     currentPhase,
     workPhase,
     restPhase,
+    restBetweenExercisesPhase,
 
     actualReps,
     remaining,
@@ -128,5 +140,6 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
     next,
     prev,
     buildFinishedWorkoutDTO,
-  };
-};
+    cancelTraining,
+  }
+}

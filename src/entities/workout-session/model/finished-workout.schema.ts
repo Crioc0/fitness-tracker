@@ -1,4 +1,4 @@
-import z from 'zod';
+import z from 'zod'
 
 export const FinishedWorkoutDTOSchema = z.object({
   sessionId: z.string().uuid(),
@@ -21,6 +21,6 @@ export const FinishedWorkoutDTOSchema = z.object({
       ),
     })
   ),
-});
+})
 
-export type FinishedWorkoutDTO = z.infer<typeof FinishedWorkoutDTOSchema>;
+export type FinishedWorkoutDTO = z.infer<typeof FinishedWorkoutDTOSchema>

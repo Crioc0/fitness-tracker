@@ -1,18 +1,18 @@
 <script lang="ts" setup>
-  import Dumbbel from 'vue-material-design-icons/Dumbbell.vue';
+  import Dumbbel from 'vue-material-design-icons/Dumbbell.vue'
 
-  import { useCreateWorkout } from '../model/useCreateWorkout.ts';
-  import { useManageExercise } from '../model/useManageExercise.ts';
-  import ExerciseCard from '../ui/ExerciseCard.vue';
-  import SelectExerciseDialog from '../ui/SelectExerciseDialog.vue';
+  import { useCreateWorkout } from '../model/useCreateWorkout.ts'
+  import { useManageExercise } from '../model/useManageExercise.ts'
+  import ExerciseCard from '../ui/ExerciseCard.vue'
+  import SelectExerciseDialog from '../ui/SelectExerciseDialog.vue'
 
-  import BaseInput from '@/shared/ui/BaseInput';
-  import FormField from '@/shared/ui/FormField';
-  import IconWrapper from '@/shared/ui/IconWrapper/IconWrapper.vue';
+  import BaseInput from '@/shared/ui/BaseInput'
+  import FormField from '@/shared/ui/FormField'
+  import IconWrapper from '@/shared/ui/IconWrapper/IconWrapper.vue'
 
-  const { onSubmit, errors, meta } = useCreateWorkout();
+  const { onSubmit, errors, meta } = useCreateWorkout()
 
-  const { fields, dialogVisible, addExercise } = useManageExercise();
+  const { fields, dialogVisible, addExercise } = useManageExercise()
 </script>
 
 <template>

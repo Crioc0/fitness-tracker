@@ -1,6 +1,6 @@
-import RunWorkoutPage from './RunWorkoutPage.vue';
-import WorkoutCreationPage from './WorkoutCreationPage.vue';
-import WorkoutSelectionPage from './WorkoutSelectionPage.vue';
+import RunWorkoutPage from './RunWorkoutPage.vue'
+import WorkoutCreationPage from './WorkoutCreationPage.vue'
+import WorkoutSelectionPage from './WorkoutSelectionPage.vue'
 
 export const mainRoutes = [
   {
@@ -21,4 +21,4 @@ export const mainRoutes = [
     component: RunWorkoutPage,
     meta: { title: 'Тренировка' },
   },
-];
+]

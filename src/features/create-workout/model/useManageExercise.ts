@@ -1,29 +1,31 @@
-import { ref } from 'vue';
-import { useFieldArray } from 'vee-validate';
+import { ref } from 'vue'
+import { useFieldArray } from 'vee-validate'
 
-import type { Exercise } from '@entities/exercise';
+import type { Exercise } from '@entities/exercise'
 
 export function useManageExercise() {
-  const { fields, push, remove } = useFieldArray<Exercise>('exercises');
-  const dialogVisible = ref(false);
-  const exerciseTitle = ref('');
+  const { fields, push, remove } = useFieldArray<Exercise>('exercises')
+  const dialogVisible = ref(false)
+  const exerciseTitle = ref('')
   const addExercise = (exerciseTitle: string | string[]) => {
     for (const item of exerciseTitle) {
-      if (!item.trim()) return;
+      if (!item.trim()) return
       push({
         title: item,
         sets: 1,
         reps: 10,
+        weight: 0,
         restTimer: 60,
-      });
+        restBetweenExercises: 90,
+      })
     }
 
-    dialogVisible.value = false;
-  };
+    dialogVisible.value = false
+  }
 
   const removeExercise = (idx: number) => {
-    if (confirm('Удалить упражнение?')) remove(idx);
-  };
+    if (confirm('Удалить упражнение?')) remove(idx)
+  }
 
   return {
     fields,
@@ -31,5 +33,5 @@ export function useManageExercise() {
     addExercise,
     removeExercise,
     exerciseTitle,
-  };
+  }
 }

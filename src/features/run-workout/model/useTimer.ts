@@ -1,40 +1,40 @@
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export function useTimer(onFinish: () => void) {
-  const remaining = ref(0);
+  const remaining = ref(0)
 
-  let endTime = 0;
-  let rafId: number | null = null;
+  let endTime = 0
+  let rafId: number | null = null
   // let pausedAt: number | null = null
 
   function start(seconds: number) {
-    stop();
+    stop()
 
-    const now = Date.now();
-    endTime = now + seconds * 1000;
-    tick();
+    const now = Date.now()
+    endTime = now + seconds * 1000
+    tick()
   }
 
   function tick() {
-    const now = Date.now();
-    const diff = endTime - now;
+    const now = Date.now()
+    const diff = endTime - now
 
-    remaining.value = Math.max(0, Math.ceil(diff / 1000));
+    remaining.value = Math.max(0, Math.ceil(diff / 1000))
 
     if (diff <= 0) {
-      stop();
-      onFinish();
-      return;
+      stop()
+      onFinish()
+      return
     }
 
-    rafId = requestAnimationFrame(tick);
+    rafId = requestAnimationFrame(tick)
   }
 
   function stop() {
     if (rafId !== null) {
-      cancelAnimationFrame(rafId);
-      navigator.vibrate(200);
-      rafId = null;
+      cancelAnimationFrame(rafId)
+      navigator.vibrate(200)
+      rafId = null
     }
   }
 
@@ -59,5 +59,5 @@ export function useTimer(onFinish: () => void) {
     start,
     remaining,
     stop,
-  };
+  }
 }
