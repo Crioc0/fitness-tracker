@@ -1,3 +1,3 @@
-import TitleNav from './TitleNav.vue';
+import TitleNav from './TitleNav.vue'
 
-export default TitleNav;
+export default TitleNav

@@ -3,7 +3,7 @@
 
   import ExerciseSelection from '@features/select-exercise'
 
-  import BaseDialog from '@shared/ui/BaseDialog'
+  import BaseDialog from '@/shared/ui/BaseDialog'
 
   const dialogVisible = defineModel<boolean>()
   const selectedExercise = ref<string | string[]>('')

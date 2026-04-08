@@ -1,14 +1,14 @@
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 
-import { useExerciseStore } from '@entities/exercise';
+import { useExerciseStore } from '@entities/exercise'
 
 export const useSelectExercise = () => {
-  const exercisesStore = useExerciseStore();
+  const exercisesStore = useExerciseStore()
   onMounted(async () => {
-    await exercisesStore.getAllExercises();
-  });
+    await exercisesStore.getAllExercises()
+  })
 
   return {
     exercisesStore,
-  };
-};
+  }
+}

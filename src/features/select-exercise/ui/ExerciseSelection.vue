@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import { useSelectExercise } from '../model/useSelectExercise.ts';
+  import { useSelectExercise } from '../model/useSelectExercise.ts'
 
-  const selected = defineModel<string | string[]>();
-  const { exercisesStore } = useSelectExercise();
+  const selected = defineModel<string | string[]>()
+  const { exercisesStore } = useSelectExercise()
 </script>
 
 <template>

@@ -1,33 +1,44 @@
-import { ref } from 'vue';
-import { defineStore } from 'pinia';
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
 
-import { create, getAll } from '../api/workout.api.ts';
-import type { WorkoutTemplate } from '../lib/workoutSchema.ts';
+import { create, getAll, remove } from '../api/workout.api.ts'
+import type { WorkoutTemplate } from '../lib/workoutSchema.ts'
 
 export const useWorkoutTemplatesStore = defineStore('workout-template', () => {
-  const workoutTemplates = ref<WorkoutTemplate[]>([]);
-  const isLoading = ref(false);
-  const errorMessage = ref('');
+  const workoutTemplates = ref<WorkoutTemplate[]>([])
+  const isLoading = ref(false)
+  const errorMessage = ref('')
 
   const getAllWorkoutTemplates = async () => {
-    isLoading.value = true;
+    isLoading.value = true
     try {
-      const { data } = await getAll();
-      workoutTemplates.value = data;
+      const { data } = await getAll()
+      workoutTemplates.value = data
     } catch (error) {
-      errorMessage.value = error instanceof Error ? error.message : 'Unexpected error';
+      errorMessage.value = error instanceof Error ? error.message : 'Unexpected error'
     }
-  };
+  }
   const createWorkoutTemplate = async (workoutTemplate: WorkoutTemplate) => {
-    isLoading.value = true;
+    isLoading.value = true
     try {
-      await create(workoutTemplate);
+      await create(workoutTemplate)
     } catch (error) {
-      errorMessage.value = error instanceof Error ? error.message : 'Unexpected error';
+      errorMessage.value = error instanceof Error ? error.message : 'Unexpected error'
     } finally {
-      isLoading.value = false;
+      isLoading.value = false
     }
-  };
+  }
+
+  const deleteWorkoutTemplate = async (id: string) => {
+    isLoading.value = true
+    try {
+      await remove(id)
+    } catch (error) {
+      errorMessage.value = error instanceof Error ? error.message : 'Unexpected error'
+    } finally {
+      isLoading.value = false
+    }
+  }
 
   return {
     workoutTemplates,
@@ -35,5 +46,6 @@ export const useWorkoutTemplatesStore = defineStore('workout-template', () => {
     errorMessage,
     getAllWorkoutTemplates,
     createWorkoutTemplate,
-  };
-});
+    deleteWorkoutTemplate,
+  }
+})

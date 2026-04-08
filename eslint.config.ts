@@ -1,14 +1,14 @@
-import pluginVitest from '@vitest/eslint-plugin';
-import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
-import { globalIgnores } from 'eslint/config';
-import skipFormatting from 'eslint-config-prettier/flat';
-import pluginBoundaries from 'eslint-plugin-boundaries';
-import importPlugin from 'eslint-plugin-import';
-import pluginOxlint from 'eslint-plugin-oxlint';
-import pluginPlaywright from 'eslint-plugin-playwright';
-import pluginPrettier from 'eslint-plugin-prettier';
-import pluginSimpleSort from 'eslint-plugin-simple-import-sort';
-import pluginVue from 'eslint-plugin-vue';
+import pluginVitest from '@vitest/eslint-plugin'
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
+import { globalIgnores } from 'eslint/config'
+import skipFormatting from 'eslint-config-prettier/flat'
+import pluginBoundaries from 'eslint-plugin-boundaries'
+import importPlugin from 'eslint-plugin-import'
+import pluginOxlint from 'eslint-plugin-oxlint'
+import pluginPlaywright from 'eslint-plugin-playwright'
+import pluginPrettier from 'eslint-plugin-prettier'
+import pluginSimpleSort from 'eslint-plugin-simple-import-sort'
+import pluginVue from 'eslint-plugin-vue'
 
 // To allow more languages other than `ts` in `.vue` files, uncomment the following lines:
 // import { configureVueProject } from '@vue/eslint-config-typescript'
@@ -105,4 +105,4 @@ export default defineConfigWithVueTs(
       'prettier/prettier': 'error',
     },
   }
-);
+)

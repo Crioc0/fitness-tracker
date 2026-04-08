@@ -2,10 +2,10 @@
   // import {  useForm } from 'vee-validate';
   // import * as zod from 'zod';
   // import { toTypedSchema } from '@vee-validate/zod';
-  import { computed } from 'vue';
-  import { useRoute } from 'vue-router';
+  import { computed } from 'vue'
+  import { useRoute } from 'vue-router'
 
-  import TitleNav from '@shared/ui/TitleNav';
+  import TitleNav from '@shared/ui/TitleNav'
 
   // type InputNumberProps = {
   //   number1: number;
@@ -35,11 +35,11 @@
   //   },
   // });
 
-  const route = useRoute();
+  const route = useRoute()
 
   const pageTitle = computed<string>(() => {
-    return (route.meta?.title as string) || 'Главная';
-  });
+    return (route.meta?.title as string) || 'Главная'
+  })
 </script>
 
 <template>

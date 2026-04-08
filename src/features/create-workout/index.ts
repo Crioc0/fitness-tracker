@@ -1,1 +1,1 @@
-export { default as CreateWorkoutForm } from './ui/CreateWorkoutForm.vue';
+export { default as CreateWorkoutForm } from './ui/CreateWorkoutForm.vue'

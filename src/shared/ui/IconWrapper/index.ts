@@ -1,3 +1,3 @@
-import IconWrapper from './IconWrapper.vue';
+import IconWrapper from './IconWrapper.vue'
 
-export default IconWrapper;
+export default IconWrapper

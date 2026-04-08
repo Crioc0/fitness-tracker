@@ -878,73 +878,53 @@
           ]
         }
       ]
-    }
-  ],
-  "workout-templates": [
+    },
     {
-      "id": "8f54",
-      "title": "Тест",
+      "id": "9cf4",
+      "sessionId": "ac02cf2f-270a-4db7-bc6a-6e643fa844d0",
+      "workoutId": "3f726386-dd43-4e7a-96ca-07473c948596",
+      "startedAt": 1775547095432,
+      "finishedAt": 1775547098980,
+      "totalDuration": 3548,
       "exercises": [
         {
-          "title": "Тест",
-          "reps": 13,
-          "sets": 3,
-          "weight": 100,
-          "restTimer": 60
+          "exerciseId": "0",
+          "exerciseTitle": "Тяга верхнего блока",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 0
+            }
+          ]
         }
       ]
     },
     {
-      "id": "9ab1",
-      "title": "Тест 1",
+      "id": "47ff",
+      "sessionId": "0afc3014-9673-4c09-bcde-69ea47a5f13e",
+      "workoutId": "072b33e5-5004-4efd-a1c2-ad527c35e937",
+      "startedAt": 1775630809578,
+      "finishedAt": 1775630815884,
+      "totalDuration": 6306,
       "exercises": [
         {
-          "title": "Жим лежа",
-          "reps": 10,
-          "sets": 1,
-          "restTimer": 60
-        }
-      ]
-    },
-    {
-      "id": "d139",
-      "title": "Тест 3",
-      "exercises": [
-        {
-          "title": "Жим штанги на наклонной",
-          "reps": 10,
-          "sets": 1,
-          "restTimer": 60
-        },
-        {
-          "title": "Сведение в кроссовере верх",
-          "reps": 10,
-          "sets": 1,
-          "restTimer": 60
-        },
-        {
-          "title": "Жим гантелей 45",
-          "reps": 10,
-          "sets": 1,
-          "restTimer": 60
-        }
-      ]
-    },
-    {
-      "id": "faa2",
-      "title": "Тест",
-      "exercises": [
-        {
-          "title": "Тяга верхнего блока",
-          "reps": 10,
-          "sets": 1,
-          "weight": 0,
-          "restTimer": 60,
-          "restBetweenExercises": 90
+          "exerciseId": "0",
+          "exerciseTitle": "Жим лежа",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 0,
+              "weight": 1
+            }
+          ]
         }
       ]
     }
   ],
+  "workout-templates": [],
   "exercises": [
     {
       "value": "Грудные",

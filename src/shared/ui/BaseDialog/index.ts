@@ -1,3 +1,3 @@
-import BaseDialog from './BaseDialog.vue';
+import BaseDialog from './BaseDialog.vue'
 
-export default BaseDialog;
+export default BaseDialog

@@ -1,3 +1,20 @@
+<script setup lang="ts">
+  import { useRouter } from 'vue-router'
+
+  import { useSelectWorkout } from '../model/useSelectWorkout.ts'
+
+  import type { WorkoutTemplate } from '@/entities/workout'
+  import TrashCan from '@/shared/icons/TrashCan'
+
+  const { selectWorkout, deleteWorkoutTemplate, workoutTemplatesStore } = useSelectWorkout()
+  const router = useRouter()
+
+  async function select(workout: WorkoutTemplate) {
+    selectWorkout(workout)
+    await router.push({ name: 'run-workout' })
+  }
+</script>
+
 <template>
   <div class="bg-gray-950 text-white flex flex-col items-center justify-center py-6">
     <div class="w-full max-w-md bg-gray-900 rounded-2xl shadow-xl p-4 space-y-6">
@@ -7,11 +24,19 @@
         <li
           v-for="workout in workoutTemplatesStore.workoutTemplates"
           :key="workout.title"
-          class="cursor-pointer p-4 bg-gray-800 rounded-2xl hover:bg-gray-700 transition"
+          class="cursor-pointer p-4 bg-gray-800 rounded-2xl flex justify-between items-center hover:bg-gray-700 transition"
           @click="select(workout)"
         >
-          <h3 class="text-lg font-medium">{{ workout.title }}</h3>
-          <p class="text-sm text-gray-400">{{ workout.exercises.length }} упражнений</p>
+          <div>
+            <h3 class="text-lg font-medium">{{ workout.title }}</h3>
+            <p class="text-sm text-gray-400">{{ workout.exercises.length }} упражнений</p>
+          </div>
+          <div
+            class="z-10 relative p-2 bg-white rounded-2xl"
+            @click.stop="deleteWorkoutTemplate(workout.id)"
+          >
+            <TrashCan class="z-10 p-2relative" />
+          </div>
         </li>
       </ul>
 
@@ -24,19 +49,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-  import { useRouter } from 'vue-router';
-
-  import type { WorkoutTemplate } from '@entities/workout';
-
-  import { useSelectWorkout } from '../model/useSelectWorkout.ts';
-
-  const { selectWorkout, workoutTemplatesStore } = useSelectWorkout();
-  const router = useRouter();
-
-  async function select(workout: WorkoutTemplate) {
-    selectWorkout(workout);
-    await router.push({ name: 'run-workout' });
-  }
-</script>

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
   defineProps<{
-    title: string;
-  }>();
+    title: string
+  }>()
 
-  defineEmits(['confirm', 'cancel']);
+  defineEmits(['confirm', 'cancel'])
 
-  const model = defineModel<boolean>();
+  const model = defineModel<boolean>()
 </script>
 
 <template>

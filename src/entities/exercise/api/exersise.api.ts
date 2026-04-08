@@ -1,5 +1,5 @@
-import { httpClient } from '@shared/lib/api/http.ts';
+import { httpClient } from '@shared/lib/api/http.ts'
 
 export const getAll = async () => {
-  return await httpClient.get('/exercises');
-};
+  return await httpClient.get('/exercises')
+}
