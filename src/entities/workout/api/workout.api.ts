@@ -7,7 +7,8 @@ export const getAll = async () => {
 }
 
 export const create = async (data: WorkoutTemplate) => {
-  return await httpClient.post('/workout-templates', data)
+  const response = await httpClient.post('/workout-templates', data)
+  return response.data
 }
 
 export const remove = async (id: string) => {

@@ -1,22 +1,18 @@
 <script setup lang="ts">
-  import { computed, watch } from 'vue'
+  import { toRef, watch } from 'vue'
   import { useRouter } from 'vue-router'
 
+  import { useWorkoutTemplatesStore } from '@/entities/workout'
   import ExerciseForm from '@/features/run-workout/ui/ExerciseForm.vue'
-  import { useSelectWorkout } from '@/features/select-workout/model/useSelectWorkout'
-
-  const { selectedWorkout } = useSelectWorkout()
 
   const router = useRouter()
+  const workoutTemplateStore = useWorkoutTemplatesStore()
 
+  const selectedWorkout = toRef(workoutTemplateStore.selectedWorkout)
   // если пользователь попал на страницу напрямую, перенаправляем на выбор
-  // if (!selectedWorkout.value) {
-  //   router.replace({ name: 'workouts' })
-  // }
-
-  const workout = computed(() => {
-    return selectedWorkout.value
-  })
+  if (!selectedWorkout.value) {
+    router.replace({ name: 'workouts' })
+  }
 
   // на случай, если выбор поменялся после монтирования
   watch(selectedWorkout, (v) => {
@@ -27,6 +23,6 @@
 </script>
 
 <template>
-  <ExerciseForm v-if="workout" :workout />
+  <ExerciseForm v-if="selectedWorkout" :workout="selectedWorkout" />
   <div v-else>"Ошибка"</div>
 </template>

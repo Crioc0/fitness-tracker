@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router'
 
 import { clear, loadCompletedReps } from './persistence'
 
+import { useWorkoutTemplatesStore } from '@/entities/workout'
 import {
   buildFinishedWorkoutDTO,
   useWorkoutSessionStore,
@@ -21,6 +22,7 @@ export const useEndWorkout = (workoutSession: WorkoutSession) => {
       console.log(workoutSessionStore.errorMessage)
       if (!workoutSessionStore.errorMessage) {
         await clear()
+        useWorkoutTemplatesStore().clearSelectedWorkout()
         router.push({ name: 'home' })
       }
     } catch (e) {

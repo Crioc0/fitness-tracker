@@ -6,8 +6,9 @@ import type { WorkoutTemplate } from '../lib/workoutSchema.ts'
 
 export const useWorkoutTemplatesStore = defineStore('workout-template', () => {
   const workoutTemplates = ref<WorkoutTemplate[]>([])
+  const selectedWorkout = ref<WorkoutTemplate | null>(null)
   const isLoading = ref(false)
-  const errorMessage = ref('')
+  const errorMessage = ref<string | null>('')
 
   const getAllWorkoutTemplates = async () => {
     isLoading.value = true
@@ -18,17 +19,21 @@ export const useWorkoutTemplatesStore = defineStore('workout-template', () => {
       errorMessage.value = error instanceof Error ? error.message : 'Unexpected error'
     }
   }
-  const createWorkoutTemplate = async (workoutTemplate: WorkoutTemplate) => {
+  const createWorkoutTemplate = async (
+    workoutTemplate: WorkoutTemplate
+  ): Promise<WorkoutTemplate> => {
     isLoading.value = true
+    errorMessage.value = null
     try {
-      await create(workoutTemplate)
+      const created = await create(workoutTemplate)
+      return created
     } catch (error) {
       errorMessage.value = error instanceof Error ? error.message : 'Unexpected error'
+      throw error // пробрасываем, чтобы вызывающий код знал об ошибке
     } finally {
       isLoading.value = false
     }
   }
-
   const deleteWorkoutTemplate = async (id: string) => {
     isLoading.value = true
     try {
@@ -40,12 +45,23 @@ export const useWorkoutTemplatesStore = defineStore('workout-template', () => {
     }
   }
 
+  const selectWorkout = (value: WorkoutTemplate) => {
+    selectedWorkout.value = value
+  }
+
+  const clearSelectedWorkout = () => {
+    selectedWorkout.value = null
+  }
+
   return {
     workoutTemplates,
     isLoading,
     errorMessage,
+    selectedWorkout,
     getAllWorkoutTemplates,
     createWorkoutTemplate,
     deleteWorkoutTemplate,
+    clearSelectedWorkout,
+    selectWorkout,
   }
 })

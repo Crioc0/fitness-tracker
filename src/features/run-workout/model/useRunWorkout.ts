@@ -1,7 +1,7 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
-import type { WorkoutTemplate } from '@entities/workout'
+import { useWorkoutTemplatesStore, type WorkoutTemplate } from '@entities/workout'
 import type { WorkoutPhase } from '@entities/workout-session'
 import { createWorkoutSession } from '@entities/workout-session'
 import { buildFinishedWorkoutDTO } from '@entities/workout-session'
@@ -82,6 +82,7 @@ export const useRunWorkout = (workout: WorkoutTemplate) => {
 
   async function cancelTraining() {
     await clear()
+    useWorkoutTemplatesStore().clearSelectedWorkout()
     router.push({ name: 'workouts' })
   }
 

@@ -3,6 +3,7 @@ import z from 'zod'
 import { exerciseSchema } from '@entities/exercise'
 
 export const workoutSchema = z.object({
+  id: z.string().optional(),
   title: z
     .string()
     .min(3, 'Название должно содержать минимум 3 символа')
