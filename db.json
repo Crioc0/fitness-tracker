@@ -938,6 +938,20 @@
           "restBetweenExercises": 90
         }
       ]
+    },
+    {
+      "id": "a354",
+      "title": "123",
+      "exercises": [
+        {
+          "title": "Жим штанги на наклонной",
+          "reps": 10,
+          "sets": 1,
+          "weight": 0,
+          "restTimer": 60,
+          "restBetweenExercises": 90
+        }
+      ]
     }
   ],
   "exercises": [

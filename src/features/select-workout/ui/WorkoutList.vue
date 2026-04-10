@@ -4,7 +4,7 @@
   import { useSelectWorkout } from '../model/useSelectWorkout.ts'
 
   import type { WorkoutTemplate } from '@/entities/workout'
-  import TrashCan from '@/shared/icons/TrashCan'
+  import { PlusBox, TrashCan } from '@/shared/icons'
 
   const { selectWorkout, deleteWorkoutTemplate, workoutTemplatesStore } = useSelectWorkout()
   const router = useRouter()
@@ -13,12 +13,19 @@
     selectWorkout(workout)
     await router.push({ name: 'run-workout' })
   }
+
+  function addTraining() {
+    router.push({ name: 'create-workout' })
+  }
 </script>
 
 <template>
   <div class="bg-gray-950 text-white flex flex-col items-center justify-center py-6">
     <div class="w-full max-w-md bg-gray-900 rounded-2xl shadow-xl p-4 space-y-6">
-      <h2 class="text-2xl font-semibold tracking-wide text-center">Выберите тренировку</h2>
+      <div class="relative flex items-center justify-center">
+        <h2 class="text-2xl font-semibold tracking-wide text-center">Выберите тренировку</h2>
+        <PlusBox @click="addTraining" :size="48" class="absolute right-0" />
+      </div>
 
       <ul class="space-y-3">
         <li

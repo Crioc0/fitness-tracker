@@ -3,9 +3,10 @@ import WorkoutCreationPage from './WorkoutCreationPage.vue'
 import WorkoutSelectionPage from './WorkoutSelectionPage.vue'
 
 export const mainRoutes = [
+  { path: '/', redirect: '/workouts' },
   {
-    path: '/',
-    name: 'home',
+    path: '/create-workout',
+    name: 'create-workout',
     component: WorkoutCreationPage,
     meta: { title: 'Создание тренировок' },
   },
