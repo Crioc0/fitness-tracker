@@ -15,6 +15,7 @@
       show-checkbox
       check-strictly
       multiple
+      placeholder="Выберите упражнение"
       node-key="value"
       :props="{ disabled: (data) => !!data.children }"
       popper-class="exercise-tree-dropdown"
@@ -25,5 +26,9 @@
 <style>
   .el-tree-node .el-checkbox.is-disabled {
     display: none;
+  }
+
+  .el-tree-node .el-select-dropdown__item.is-disabled {
+    color: var(--el-text-color-regular);
   }
 </style>
