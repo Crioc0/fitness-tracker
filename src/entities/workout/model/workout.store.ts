@@ -1,8 +1,13 @@
-import { ref } from 'vue'
+import { onMounted, ref, toRaw } from 'vue'
 import { defineStore } from 'pinia'
 
 import { create, getAll, remove } from '../api/workout.api.ts'
 import type { WorkoutTemplate } from '../lib/workoutSchema.ts'
+import {
+  deleteWorkoutTemplateFromIDB,
+  getWorkoutTempalteFromIDB,
+  saveWorkoutTemplateToIDB,
+} from './persistence'
 
 export const useWorkoutTemplatesStore = defineStore('workout-template', () => {
   const workoutTemplates = ref<WorkoutTemplate[]>([])
@@ -45,13 +50,22 @@ export const useWorkoutTemplatesStore = defineStore('workout-template', () => {
     }
   }
 
-  const selectWorkout = (value: WorkoutTemplate) => {
+  const selectWorkout = async (value: WorkoutTemplate) => {
     selectedWorkout.value = value
+    await saveWorkoutTemplateToIDB(toRaw(value))
   }
 
-  const clearSelectedWorkout = () => {
+  const clearSelectedWorkout = async () => {
     selectedWorkout.value = null
+    await deleteWorkoutTemplateFromIDB()
   }
+
+  onMounted(async () => {
+    const data = await getWorkoutTempalteFromIDB()
+    if (data) {
+      selectedWorkout.value = data
+    }
+  })
 
   return {
     workoutTemplates,

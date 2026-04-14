@@ -8,7 +8,7 @@ const selectedWorkout = ref<WorkoutTemplate | null>(null)
 export function useSelectWorkout() {
   const workoutTemplatesStore = useWorkoutTemplatesStore()
   function selectWorkout(w: WorkoutTemplate) {
-    workoutTemplatesStore.selectedWorkout = w
+    workoutTemplatesStore.selectWorkout(w)
   }
 
   async function deleteWorkoutTemplate(id: string) {

@@ -23,7 +23,7 @@ export const useEndWorkout = (workoutSession: WorkoutSession) => {
       if (!workoutSessionStore.errorMessage) {
         await clear()
         useWorkoutTemplatesStore().clearSelectedWorkout()
-        router.push({ name: 'home' })
+        router.push({ name: 'workouts' })
       }
     } catch (e) {
       console.log(e)

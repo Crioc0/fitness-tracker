@@ -922,6 +922,94 @@
           ]
         }
       ]
+    },
+    {
+      "id": "bd26",
+      "sessionId": "637b8169-8754-46fb-a4c2-c4d2fd7505b8",
+      "workoutId": "5ec7249d-c0a2-4d3e-81e9-81d7473b33e1",
+      "startedAt": 1776145973193,
+      "finishedAt": 1776145982571,
+      "totalDuration": 9378,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Жим штанги на наклонной",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "29f1",
+      "sessionId": "637b8169-8754-46fb-a4c2-c4d2fd7505b8",
+      "workoutId": "5ec7249d-c0a2-4d3e-81e9-81d7473b33e1",
+      "startedAt": 1776145973193,
+      "finishedAt": 1776145984298,
+      "totalDuration": 11105,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Жим штанги на наклонной",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "205f",
+      "sessionId": "637b8169-8754-46fb-a4c2-c4d2fd7505b8",
+      "workoutId": "5ec7249d-c0a2-4d3e-81e9-81d7473b33e1",
+      "startedAt": 1776145973193,
+      "finishedAt": 1776146034522,
+      "totalDuration": 61329,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Жим штанги на наклонной",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "269e",
+      "sessionId": "c4e88b6b-3763-4892-bf8b-cac3e4796042",
+      "workoutId": "0ac6c980-97bd-424e-88dd-b6b3d4931e67",
+      "startedAt": 1776146073810,
+      "finishedAt": 1776146085312,
+      "totalDuration": 11502,
+      "exercises": [
+        {
+          "exerciseId": "0",
+          "exerciseTitle": "Жим штанги на наклонной",
+          "sets": [
+            {
+              "setNumber": 1,
+              "plannedReps": 10,
+              "actualReps": 10,
+              "weight": 0
+            }
+          ]
+        }
+      ]
     }
   ],
   "workout-templates": [

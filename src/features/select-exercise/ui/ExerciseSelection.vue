@@ -6,6 +6,7 @@
 </script>
 
 <template>
+  <!-- TODO Сделать правильную типизацию после корректого создания упражнений -->
   <div class="w-full flex">
     <el-tree-select
       v-if="!exercisesStore.isLoading"
