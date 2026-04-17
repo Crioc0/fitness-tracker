@@ -3,7 +3,7 @@
   import { useRouter } from 'vue-router'
 
   import { useWorkoutTemplatesStore } from '@/entities/workout'
-  import ExerciseForm from '@/features/run-workout/ui/ExerciseForm.vue'
+  import ExerciseForm from '@/features/new-run-workout/ui/ExerciseForm.vue'
 
   const router = useRouter()
   const workoutTemplateStore = useWorkoutTemplatesStore()
